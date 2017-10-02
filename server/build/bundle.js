@@ -21945,7 +21945,18 @@ var Home = function Home() {
   return _react2.default.createElement(
     'div',
     null,
-    'I\'m the VERY VERY BEST home component'
+    _react2.default.createElement(
+      'div',
+      null,
+      'I\'m the VERY VERY BEST home component'
+    ),
+    _react2.default.createElement(
+      'button',
+      { onClick: function onClick() {
+          return console.log('Hi there!');
+        } },
+      'Press me!'
+    )
   );
 };
 
