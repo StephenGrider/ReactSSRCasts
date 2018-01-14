@@ -19,6 +19,9 @@ const config = {
     path: path.resolve(__dirname, 'build')
   },
 
+  // Tell webpack not to bundle any libs into the build/bundle.js (server side bundle) as long as
+  // the lib is in node_modules folder. This will reduce the size of build/bundle.js and 
+  // make the webpack boots up the bundle faster
   externals: [webpackNodeExternals()]
 };
 
