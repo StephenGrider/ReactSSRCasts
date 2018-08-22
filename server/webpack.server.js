@@ -22,4 +22,8 @@ const config = {
   externals: [webpackNodeExternals()]
 };
 
+if (process.env.NODE_ENV === 'production') {
+  config.output.path = __dirname;
+}
+
 module.exports = merge(baseConfig, config);

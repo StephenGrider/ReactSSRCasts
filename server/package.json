@@ -8,7 +8,8 @@
     "dev:server": "nodemon --watch build --exec \"node build/bundle.js\"",
     "dev:build-server": "webpack --config webpack.server.js --watch",
     "dev:build-client": "webpack --config webpack.client.js --watch",
-    "build": "NODE_ENV=production webpack --config webpack.client.js -p"
+    "build": "NODE_ENV=production webpack --config webpack.client.js -p && NODE_ENV=production webpack --config webpack.server.js",
+    "start": "node bundle.js"
   },
   "author": "",
   "license": "ISC",
