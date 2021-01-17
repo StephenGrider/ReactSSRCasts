@@ -1,1 +1,2 @@
-CMS is built on the top of the Stephen Grider's https://github.com/StephenGrider/ReactSSRCasts
+##ReactMono
+###React Redux Express SSR Framework
