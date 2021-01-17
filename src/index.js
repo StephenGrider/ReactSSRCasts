@@ -4,15 +4,15 @@ dotenv.config({ path: `${process.env.NODE_ENV}.env`});
 import express from 'express';
 import config from 'config';
 import { matchRoutes } from 'react-router-config';
-import Routes from './client/Routes';
-import renderer from './helpers/renderer';
-import createStore from './helpers/createStore';
+import Routes from '@client/Routes';
+import renderer from '@root/helpers/renderer';
+import createStore from '@root/helpers/createStore';
 import mongoose from 'mongoose';
 import cookieSession from 'cookie-session';
 import passport from 'passport';
-import DataResolver from './services/DataResolver';
-import requireLogin from './middlewares/requireLogin';
-import './services/passport';
+import DataResolver from '@services/DataResolver';
+import requireLogin from '@root/middlewares/requireLogin';
+import '@services/passport';
 
 /** Run DB connection. */
 try {

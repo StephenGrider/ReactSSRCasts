@@ -2,7 +2,7 @@ import passport from 'passport';
 import dotenv from 'dotenv';
 dotenv.config({ path: `${process.env.NODE_ENV}.env`});
 import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
-import User from '../models/User';
+import User from '@root/models/User';
 
 passport.serializeUser((user, done) => {
     done(null, user.id);
