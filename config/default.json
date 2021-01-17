@@ -1,0 +1,8 @@
+{
+  "server": {
+    "port": 3001
+  },
+  "mongo": {
+    "mongoURI": "mongodb://localhost:27017/ssr1"
+  }
+}

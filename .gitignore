@@ -1,5 +1,9 @@
+.env
+development.env
+production.env
+.idea
+gen/*
 node_modules
-.DS_Store
-bundle.js
-dev.js
 public/bundle.js
+public/bundle.js.LICENSE.txt
+server-build/*
