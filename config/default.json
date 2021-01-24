@@ -3,6 +3,6 @@
     "port": 3001
   },
   "mongo": {
-    "mongoURI": "mongodb://localhost:27017/ssr1"
+    "mongoURI": "mongodb://root:example@localhost:27017/reactmono1?authSource=admin"
   }
 }

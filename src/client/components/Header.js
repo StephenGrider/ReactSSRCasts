@@ -16,7 +16,7 @@ const Header = ({ auth }) => {
     return (
         <nav>
             <div className={'nav-wrapper'}>
-                <Link to={'/'} className={'brand-logo'}>React SSR</Link>
+                <Link to={'/'} className={'brand-logo'}>ReactMono</Link>
                 <ul className={'right'}>
                     <li>
                         <Link to={'/users'}>Users</Link>

@@ -11,6 +11,7 @@
     "license": "ISC",
     "dependencies": {
         "@babel/plugin-transform-classes": "^7.12.1",
+        "@babel/polyfill": "^7.12.1",
         "axios": "^0.21.1",
         "babel-cli": "6.26.0",
         "babel-core": "6.26.0",
@@ -32,6 +33,7 @@
         "nodemon": "^2.0.6",
         "passport": "^0.4.1",
         "passport-google-oauth20": "^2.0.0",
+        "path": "^0.12.7",
         "react": "^17.0.1",
         "react-dom": "^17.0.1",
         "react-helmet": "5.2.0",
@@ -48,7 +50,9 @@
     "devDependencies": {
         "@babel/cli": "^7.12.10",
         "@babel/core": "^7.12.10",
+        "@babel/node": "^7.12.10",
         "@babel/plugin-proposal-class-properties": "^7.12.1",
+        "@babel/plugin-transform-react-jsx": "^7.12.12",
         "@babel/preset-env": "^7.12.11",
         "@babel/preset-react": "^7.12.10",
         "babel-plugin-module-resolver": "^4.1.0",
