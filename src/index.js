@@ -10,8 +10,7 @@ import createStore from '@root/helpers/createStore';
 import mongoose from 'mongoose';
 import cookieSession from 'cookie-session';
 import passport from 'passport';
-import DataResolver from '@services/DataResolver';
-import requireLogin from '@root/middlewares/requireLogin';
+import routerProcessor from '@rm/core/routerProcessor';
 import '@services/passport';
 
 /** Run DB connection. */
@@ -46,48 +45,8 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-/** Routers configuration */
-let dataResolver = {};
-app.get('/api/users', (req, res) => {
-    dataResolver = new DataResolver(req);
-    res.send(dataResolver.get('users').data);
-});
-
-app.get('/api/inner-users', (req, res) => {
-    dataResolver = new DataResolver(req);
-    res.send(dataResolver.get('inner-users').data);
-});
-
-app.get('/api/admins', requireLogin, (req, res) => {
-    dataResolver = new DataResolver(req);
-    res.send(dataResolver.get('admins').data);
-});
-
-app.get('/api/current_user', (req, res) => {
-    dataResolver = new DataResolver(req);
-    res.send(dataResolver.get('current_user').data);
-    // res.send(req.user);
-});
-
-app.get(
-    '/api/auth/google',
-    passport.authenticate('google', {
-        scope: ['profile', 'email']
-    })
-);
-
-app.get(
-    '/api/auth/google/callback',
-    passport.authenticate('google'),
-    (req, res) => {
-        res.redirect('/');
-    }
-);
-
-app.get('/api/logout', (req, res) => {
-    req.logout();
-    res.redirect('/');
-});
+/** Process Router Configurations */
+routerProcessor(app);
 
 /**
  * Frontend routers configuration.

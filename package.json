@@ -4,8 +4,8 @@
     "description": "React SSR, Server side rendering React Redux framework",
     "main": "index.js",
     "scripts": {
-        "prod": "webpack --config webpack.server.js; webpack --config webpack.client.js;NODE_ENV=production node server-build/bundle.js",
-        "dev": "npx babel ./src --out-dir ./gen --source-maps; concurrently \"npx babel --watch ./src --out-dir ./gen --source-maps\" \"webpack --config webpack.dev-client.js --watch\" \"DEBUG=* NODE_ENV=development nodemon ./gen/index.js\""
+        "prod": "npx babel ./src --out-dir ./generated; webpack --config webpack.client.js; NODE_ENV=production node ./generated/index.js",
+        "dev": "npx babel ./src --out-dir ./generated --source-maps; concurrently \"npx babel --watch ./src --out-dir ./generated --source-maps\" \"webpack --config webpack.dev-client.js --watch\" \"NODE_ENV=development nodemon --inspect ./generated/index.js\""
     },
     "author": "",
     "license": "ISC",

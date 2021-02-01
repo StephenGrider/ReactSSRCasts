@@ -16,6 +16,8 @@
             "root": ["./src"],
             "alias": {
                 "@client": "./src/client",
+                "@modules": "./src/modules",
+                "@rm": "./src/modules/react-mono",
                 "@root": "./src",
                 "@services": "./src/services"
             }

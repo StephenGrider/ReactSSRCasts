@@ -2,8 +2,9 @@
 development.env
 production.env
 .idea
-gen/*
+generated/*
 node_modules
 public/bundle.js
 public/bundle.js.LICENSE.txt
 server-build/*
+dockervolume/*

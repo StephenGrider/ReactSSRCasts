@@ -27,6 +27,8 @@ module.exports = {
         extensions: ['.js', '.jsx'],
         alias: {
             '@client': path.resolve(__dirname, 'src/client/'),
+            "@modules": path.resolve(__dirname, 'src/modules/'),
+            "@rm": path.resolve(__dirname, 'src/modules/react-mono/'),
             '@root': path.resolve(__dirname, 'src/'),
             '@services': path.resolve(__dirname, 'src/services/')
         }
