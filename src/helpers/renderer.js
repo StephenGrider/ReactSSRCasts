@@ -6,17 +6,27 @@ import { renderRoutes } from 'react-router-config';
 import serialize from 'serialize-javascript';
 import { Helmet } from 'react-helmet';
 import Routes from '../client/Routes';
+import config from 'config';
 
 export default (req, store, context) => {
-    const content = renderToString(
-        <Provider store={store}>
-            <StaticRouter location={req.path} context={context}>
-                <div>{renderRoutes(Routes)}</div>
-            </StaticRouter>
-        </Provider>
-    );
+    let useSSR = config.get('useSSR');
+
+    const content = useSSR
+        ? renderToString(
+            <Provider store={store}>
+                <StaticRouter location={req.path} context={context}>
+                    <div>{renderRoutes(Routes)}</div>
+                </StaticRouter>
+            </Provider>)
+        : '';
 
     const helmet = Helmet.renderStatic();
+
+    const initialState = useSSR
+        ? `<script>
+            window.INITIAL_STATE = ${serialize(store.getState())}
+        </script>`
+        : ''
 
     return `
         <html>
@@ -27,9 +37,7 @@ export default (req, store, context) => {
             </head>
             <body>
                 <div id="root">${content}</div>
-                <script>
-                    window.INITIAL_STATE = ${serialize(store.getState())}
-                </script>
+                ${initialState}
                 <script src="bundle.js"></script>
             </body>
         </html>

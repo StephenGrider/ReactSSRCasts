@@ -56,8 +56,9 @@ routerProcessor(app);
 app.get('*', (req, res) => {
     const store = createStore(req);
 
+    let useSSR = config.get('useSSR');
     const promises = matchRoutes(Routes, req.path).map(({ route }) => {
-        return route.loadData ? route.loadData(store) : null;
+        return route.loadData && useSSR ? route.loadData(store) : null;
     }).map(promise => {
         if (promise) {
             return new Promise((resolve, reject) => {

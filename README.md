@@ -24,3 +24,11 @@ ReactMono uses React and Redux for client side and nodejs with Express.js for se
 * npm
 * docker
 * docker-compose
+
+### Configurations
+* production.env - production environment variables
+  development.env - development mode environment variables
+* config/default.json - common configurations
+  config/production.json - production configs, rewrite default.json
+  config/development.json - development configurations, rewrite default configs
+* useSSR - turn on/off server side rendering
