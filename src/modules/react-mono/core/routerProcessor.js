@@ -14,6 +14,9 @@ export default (app) => {
             let routeFile = path.resolve(moduleDirPath, 'routes.js');
             if (fs.existsSync(routeFile)) {
                 let routesData = require(routeFile).default;
+                if (!Array.isArray(routesData)) {
+                    return;
+                }
                 routesData.map((routeData) => {
                     let method = routeData.method.toLowerCase();
                     if (routeData.middleware) {

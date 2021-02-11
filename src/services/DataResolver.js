@@ -1,4 +1,4 @@
-import {users, admins, innerUsers} from '@root/dev/server-test-response';
+import {users, admins, innerUsers} from '../dev/server-test-response';
 
 class DataResolver {
     request = {};

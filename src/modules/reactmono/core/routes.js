@@ -1,7 +1,4 @@
-import DataResolver from '../../../services/DataResolver';
-import requireLogin from '../../../middlewares/requireLogin';
-
-export default [
+export default (dataResolver, requireLogin) => [
     {
         'path': '/api/users',
         'method': 'GET',

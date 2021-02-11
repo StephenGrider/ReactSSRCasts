@@ -11,6 +11,7 @@ module.exports = {
                     presets: [
                         'react',
                         'stage-0',
+                        'es2015',
                         ['env', {targets: {browsers: ['last 2 versions']}}]
                     ],
                     plugins: [
@@ -20,17 +21,7 @@ module.exports = {
             }
         ]
     },
-    // Resolve IDE (IntelliJ/WebStorm) file path aliases hints.
-    // Use this webpack.config.js under
-    // File->Settings->Languages&Frameworks->JavaScript->Webpack.
     resolve: {
-        extensions: ['.js', '.jsx'],
-        alias: {
-            '@client': path.resolve(__dirname, 'src/client/'),
-            "@modules": path.resolve(__dirname, 'src/modules/'),
-            "@rm": path.resolve(__dirname, 'src/modules/react-mono/'),
-            '@root': path.resolve(__dirname, 'src/'),
-            '@services': path.resolve(__dirname, 'src/services/')
-        }
+        extensions: ['.js', '.jsx']
     }
 };

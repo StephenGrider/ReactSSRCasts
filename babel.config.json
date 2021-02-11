@@ -1,26 +1,19 @@
 {
     "presets": [
         [
-            "@babel/env",
+            "babel-env",
             {
                 "targets": {
                     "node": "12"
                 }
             }
         ],
-        ["@babel/preset-react"]
+        ["babel-preset-react"]
     ],
     "plugins": [
         "transform-class-properties",
         ["module-resolver", {
-            "root": ["./src"],
-            "alias": {
-                "@client": "./src/client",
-                "@modules": "./src/modules",
-                "@rm": "./src/modules/react-mono",
-                "@root": "./src",
-                "@services": "./src/services"
-            }
+            "root": ["./src"]
         }]
     ]
 }

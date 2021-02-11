@@ -4,14 +4,14 @@ dotenv.config({ path: `${process.env.NODE_ENV}.env`});
 import express from 'express';
 import config from 'config';
 import { matchRoutes } from 'react-router-config';
-import Routes from '@client/Routes';
-import renderer from '@root/helpers/renderer';
-import createStore from '@root/helpers/createStore';
+import Routes from './client/Routes';
+import renderer from './helpers/renderer';
+import createStore from './helpers/createStore';
 import mongoose from 'mongoose';
 import cookieSession from 'cookie-session';
 import passport from 'passport';
-import routerProcessor from '@rm/core/routerProcessor';
-import '@services/passport';
+import routerProcessor from './modules/react-mono/core/routerProcessor';
+import './services/passport';
 
 /** Run DB connection. */
 try {
@@ -44,6 +44,13 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
+
+// ToDo implement routes in modules.
+import { getRoutes } from '@reactmono/core';
+import DataResolver from './services/DataResolver';
+import requireLogin from './middlewares/requireLogin';
+console.log('Core getRoutes:', getRoutes(DataResolver, requireLogin));
+
 
 /** Process Router Configurations */
 routerProcessor(app);
