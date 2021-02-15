@@ -1,2 +1,2 @@
 require = require('esm')(module, {await: true});
-module.exports.getRoutes = require('./routes').default;
+module.exports.DataResolver = require('./DataResolver').default;

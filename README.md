@@ -32,3 +32,13 @@ ReactMono uses React and Redux for client side and nodejs with Express.js for se
   config/production.json - production configs, rewrite default.json
   config/development.json - development configurations, rewrite default configs
 * useSSR - turn on/off server side rendering
+
+#### Create Module
+```
+cd src/modules/reactmono/test-user/ //example path
+npm init -y
+```
+#### Istall Module
+```
+npm install --save ./src/modules/reactmono/test-user
+```

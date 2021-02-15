@@ -10,7 +10,6 @@ import createStore from './helpers/createStore';
 import mongoose from 'mongoose';
 import cookieSession from 'cookie-session';
 import passport from 'passport';
-import routerProcessor from './modules/react-mono/core/routerProcessor';
 import './services/passport';
 
 /** Run DB connection. */
@@ -45,15 +44,34 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-// ToDo implement routes in modules.
-import { getRoutes } from '@reactmono/core';
-import DataResolver from './services/DataResolver';
-import requireLogin from './middlewares/requireLogin';
-console.log('Core getRoutes:', getRoutes(DataResolver, requireLogin));
-
-
 /** Process Router Configurations */
-routerProcessor(app);
+// ToDo implement routes in modules.
+import appConfig from './etc';
+let modules = appConfig.modules;
+let routes = [];
+modules.map(moduleName => {
+    let moduleRoutes = require(moduleName).routes;
+    console.log('moduleRoutes: ', moduleRoutes);
+    if (Array.isArray(moduleRoutes)) {
+        routes = [...routes, ...moduleRoutes];
+    }
+});
+
+routes.map((routeData) => {
+    let method = routeData.method.toLowerCase();
+    if (routeData.middleware) {
+        app[method](
+            routeData.path,
+            routeData.middleware,
+            routeData.callback
+        );
+    } else {
+        app[method](
+            routeData.path,
+            routeData.callback
+        )
+    }
+});
 
 /**
  * Frontend routers configuration.

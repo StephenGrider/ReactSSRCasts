@@ -1,5 +1,5 @@
-import DataResolver from '../../../services/DataResolver';
-import requireLogin from '../../../middlewares/requireLogin';
+import { DataResolver } from '@reactmono/core';
+import { requireLogin } from '@reactmono/auth';
 
 export default [
     {
