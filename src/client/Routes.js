@@ -4,12 +4,14 @@ import HomePage from './pages/HomePage';
 import UsersListPage from './pages/UsersListPage';
 import AdminsListPage from './pages/AdminsListPage';
 import NotFoundPage from './pages/NotFoundPage';
-import adminsListPageLoader from './pages/loader/adminsListPage';
-import usersListPageLoader from './pages/loader/usersListPage';
+import adminsListPageLoader from './loaders/adminsListPage';
+import usersListPageLoader from './loaders/usersListPage';
+import defaultLoader from './loaders/defaultLoader';
 
 export default [
     {
-        ...App,
+        component: App,
+        loadData: defaultLoader,
         routes: [
             {
                 component: HomePage,

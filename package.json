@@ -1,5 +1,5 @@
 {
-    "name": "react-mono",
+    "name": "@reactmono/framework",
     "version": "0.1.0",
     "description": "React SSR, Server side rendering React Redux framework",
     "main": "index.js",

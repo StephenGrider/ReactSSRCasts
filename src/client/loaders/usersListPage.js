@@ -1,4 +1,4 @@
-import { fetchUsers, fetchInnerUsers } from '../../actions/fetchUsers';
+import { fetchUsers, fetchInnerUsers } from '../actions/fetchUsers';
 
 /**
  * User List page SSR data loaders.
