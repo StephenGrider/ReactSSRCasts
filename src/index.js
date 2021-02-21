@@ -7,30 +7,15 @@ import { matchRoutes } from 'react-router-config';
 import Routes from './client/Routes';
 import renderer from './helpers/renderer';
 import createStore from './helpers/createStore';
-import mongoose from 'mongoose';
 import cookieSession from 'cookie-session';
 import passport from 'passport';
 import './services/passport';
 
 /** Run DB connection. */
-try {
-    mongoose.Promise = global.Promise;
-    mongoose.connect(config.get('mongo.mongoURI'), {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-        useCreateIndex: true,
-        useFindAndModify: false
-    });
-
-    console.log('MongoDB Connected...');
-} catch (err) {
-    console.log(err.message);
-    // Exit process with failure
-    process.exit(1);
-}
+import { dbConnector } from '@reactmono/core';
+dbConnector();
 
 const app = express();
-
 app.use(express.static('public'));
 
 /** Auth implementation, Cookie Key pass */
