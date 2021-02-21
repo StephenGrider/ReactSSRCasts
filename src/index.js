@@ -1,15 +1,14 @@
 import '@babel/polyfill';
 import dotenv from 'dotenv';
 dotenv.config({ path: `${process.env.NODE_ENV}.env`});
+
 import express from 'express';
 import config from 'config';
+
 import { matchRoutes } from 'react-router-config';
 import Routes from './client/Routes';
 import renderer from './helpers/renderer';
 import createStore from './helpers/createStore';
-import cookieSession from 'cookie-session';
-import passport from 'passport';
-import './services/passport';
 
 /** Run DB connection. */
 import { dbConnector } from '@reactmono/core';
@@ -19,15 +18,8 @@ const app = express();
 app.use(express.static('public'));
 
 /** Auth implementation, Cookie Key pass */
-app.use(
-    cookieSession({
-        name: 'google-auth-session',
-        maxAge: 30 * 24 * 60 * 60 * 1000,
-        keys: [process.env.COOKIE_KEY1, process.env.COOKIE_KEY2]
-    })
-);
-app.use(passport.initialize());
-app.use(passport.session());
+import { initSession } from '@reactmono/auth';
+initSession(app);
 
 /** Process Router Configurations */
 import appConfig from './etc';

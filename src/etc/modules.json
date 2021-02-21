@@ -1,4 +1,4 @@
 {
-  "@reactmono/test-user": 1,
-  "@reactmono/google-auth": 1
+  "@reactmono/auth": 1,
+  "@reactmono/test-user": 1
 }
