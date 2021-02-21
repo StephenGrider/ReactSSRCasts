@@ -1,4 +1,4 @@
-import 'babel-polyfill';
+import '@babel/polyfill';
 import dotenv from 'dotenv';
 dotenv.config({ path: `${process.env.NODE_ENV}.env`});
 import express from 'express';
