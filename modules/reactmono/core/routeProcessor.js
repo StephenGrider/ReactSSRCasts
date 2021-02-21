@@ -1,6 +1,9 @@
+import { AppConfig } from '@reactmono/registry';
+
 /** Process Api Route Configurations */
-export default (app, appConfig) => {
-    let modules = appConfig.modules;
+export default (app) => {
+    let modules = AppConfig.get('modules');
+
     let routes = [];
     modules.map(moduleName => {
         let moduleRoutes = require(moduleName).routes;

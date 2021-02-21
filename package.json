@@ -15,6 +15,7 @@
         "@babel/polyfill": "^7.12.1",
         "@reactmono/auth": "file:modules/reactmono/auth",
         "@reactmono/core": "file:modules/reactmono/core",
+        "@reactmono/registry": "file:modules/reactmono/registry",
         "@reactmono/test-user": "file:modules/reactmono/test-user",
         "axios": "^0.21.1",
         "babel-register": "^6.26.0",

@@ -22,9 +22,12 @@ import { initSession } from '@reactmono/auth';
 initSession(app);
 
 /** Process Router Configurations */
-import appConfig from './etc';
+import appConfigs from './etc';
+import { AppConfig } from '@reactmono/registry';
+AppConfig.set('modules', appConfigs.modules);
+
 import { routeProcessor } from '@reactmono/core';
-routeProcessor(app, appConfig);
+routeProcessor(app);
 
 /**
  * Frontend routers configuration.
