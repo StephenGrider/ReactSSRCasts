@@ -5,15 +5,11 @@ dotenv.config({ path: `${process.env.NODE_ENV}.env`});
 import express from 'express';
 import config from 'config';
 
-import { matchRoutes } from 'react-router-config';
-import Routes from './client/Routes';
-import renderer from './helpers/renderer';
-import createStore from './helpers/createStore';
-
-/** Run DB connection. */
+/** Run DB connection */
 import { dbConnector } from '@reactmono/core';
 dbConnector();
 
+/** Create application */
 const app = express();
 app.use(express.static('public'));
 
@@ -21,49 +17,23 @@ app.use(express.static('public'));
 import { initSession } from '@reactmono/auth';
 initSession(app);
 
-/** Process Router Configurations */
+/** Prepare global configurations */
 import appConfigs from './etc';
 import { AppConfig } from '@reactmono/registry';
 AppConfig.set('modules', appConfigs.modules);
 
+/** Process WebApi Router Configurations */
 import { routeProcessor } from '@reactmono/core';
 routeProcessor(app);
 
 /**
- * Frontend routers configuration.
+ * Frontend/Client routers configuration.
  * Process all other then api requests.
  * Backend frontend and browser frontend common start point.
  */
-app.get('*', (req, res) => {
-    const store = createStore(req);
-
-    let useSSR = config.get('useSSR');
-    const promises = matchRoutes(Routes, req.path).map(({ route }) => {
-        return route.loadData && useSSR ? route.loadData(store) : null;
-    }).map(promise => {
-        if (promise) {
-            return new Promise((resolve, reject) => {
-                promise.then(resolve).catch(resolve);
-            })
-        }
-    });
-
-    /** Process page SSR data loaders */
-    Promise.all(promises).then(() => {
-        const context = {};
-        const content = renderer(req, store, context);
-
-        if (context.url) {
-            return res.redirect(301, context.url);
-        }
-
-        if (context.notFound) {
-            res.status(404);
-        }
-
-        res.send(content);
-    });
-});
+// import { default as client } from './client';
+import { default as client } from './client';
+client.routes(app);
 
 /** Start application */
 const serverPort = config.get('server.port');

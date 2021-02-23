@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { renderRoutes } from 'react-router-config';
 import serialize from 'serialize-javascript';
 import { Helmet } from 'react-helmet';
-import Routes from '../client/Routes';
+import Routes from '../Routes';
 import config from 'config';
 
 export default (req, store, context) => {

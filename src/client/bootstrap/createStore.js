@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import reducers from '../client/reducers';
 import { DataResolver } from '@reactmono/core';
+import reducers from '../reducers';
 
 export default (req) => {
     const dataResolver = new DataResolver(req);
@@ -10,11 +10,9 @@ export default (req) => {
         resolver: dataResolver
     }
 
-    const store = createStore(
+    return createStore(
         reducers,
         {},
         applyMiddleware(thunk.withExtraArgument(storeParams))
     );
-
-    return store;
 }
