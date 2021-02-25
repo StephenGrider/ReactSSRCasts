@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
         "prod": "npx babel ./src --out-dir ./generated; npx webpack --config webpack.client.js; NODE_ENV=production node ./generated/index.js",
-        "dev": "npx babel ./src --out-dir ./generated --source-maps; concurrently \"npx babel --watch ./src --out-dir ./generated --source-maps\" \"npx webpack --config webpack.dev-client.js --watch\" \"NODE_ENV=development nodemon --inspect ./generated/index.js\""
+        "dev": "npx babel ./src --out-dir ./generated --source-maps; concurrently \"npx babel --watch ./src --out-dir ./generated --source-maps\" \"npx webpack --config webpack.dev-client.js --watch\" \"npx webpack --config webpack.dev-admin.js --watch\" \"NODE_ENV=development nodemon --inspect ./generated/index.js\""
     },
     "author": "",
     "license": "ISC",

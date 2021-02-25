@@ -38,7 +38,7 @@ export default (req, store, context) => {
             <body>
                 <div id="root">${content}</div>
                 ${initialState}
-                <script src="bundle.js"></script>
+                <script src="/admin-bundle.js"></script>
             </body>
         </html>
     `;

@@ -2,7 +2,7 @@ import config from 'config';
 import { matchRoutes } from 'react-router-config';
 import createStore from './createStore';
 import renderer from './renderer';
-import Routes from '../Routes';
+import getRoutes from './getRoutes';
 
 /**
  * Frontend Client routers configuration.
@@ -14,7 +14,7 @@ export default (app) => {
         const store = createStore(req);
 
         let useSSR = config.get('useSSR');
-        const promises = matchRoutes(Routes, req.path).map(({ route }) => {
+        const promises = matchRoutes(getRoutes(), req.path).map(({ route }) => {
             return route.loadData && useSSR ? route.loadData(store) : null;
         }).map(promise => {
             if (promise) {

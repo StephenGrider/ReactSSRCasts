@@ -21,19 +21,30 @@ initSession(app);
 import appConfigs from './etc';
 import { AppConfig } from '@reactmono/registry';
 AppConfig.set('modules', appConfigs.modules);
+let adminPath = config.get('adminPath');
+const defaultAdminPath = 'admin'
+adminPath = adminPath ? adminPath : defaultAdminPath;
+AppConfig.set('adminPath', adminPath);
 
 /** Process WebApi Router Configurations */
 import { routeProcessor } from '@reactmono/core';
 routeProcessor(app);
 
 /**
+ * Admin Area Client routers configuration.
+ * Process all other then api requests.
+ * Backend frontend and browser frontend common start point.
+ */
+import adminRoutes from './admin/bootstrap/initRoutes';
+adminRoutes(app);
+
+/**
  * Frontend/Client routers configuration.
  * Process all other then api requests.
  * Backend frontend and browser frontend common start point.
  */
-// import { default as client } from './client';
-import { default as client } from './client';
-client.routes(app);
+import clientRoutes from './client/bootstrap/initRoutes';
+clientRoutes(app);
 
 /** Start application */
 const serverPort = config.get('server.port');

@@ -4,9 +4,9 @@ const baseConfig = require('./webpack.base.js');
 
 const config = {
     mode: 'development',
-    entry: './src/client/client.js',
+    entry: './src/admin/admin.js',
     output: {
-        filename: 'bundle.js',
+        filename: 'admin-bundle.js',
         path: path.resolve(__dirname, 'public')
     },
     module: {
