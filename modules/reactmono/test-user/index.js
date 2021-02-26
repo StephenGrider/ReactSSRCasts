@@ -1,2 +1,2 @@
 require = require('esm')(module, {await: true});
-module.exports.routes = require('./routes').default;
+module.exports.getRoutes = require('./getRoutes').default;

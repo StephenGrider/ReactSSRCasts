@@ -1,7 +1,7 @@
 import { DataResolver } from '@reactmono/core';
 import { requireLogin } from '@reactmono/auth';
 
-export default [
+export default () => ([
     {
         'path': '/api/users',
         'method': 'GET',
@@ -29,4 +29,4 @@ export default [
             res.send(dataResolver.get('admins').data);
         }
     }
-];
+]);

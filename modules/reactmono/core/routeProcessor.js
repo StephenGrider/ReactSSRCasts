@@ -6,10 +6,10 @@ export default (app) => {
 
     let routes = [];
     modules.map(moduleName => {
-        let moduleRoutes = require(moduleName).routes;
-        console.log('moduleRoutes: ', moduleRoutes);
-        if (Array.isArray(moduleRoutes)) {
-            routes = [...routes, ...moduleRoutes];
+        let getModuleRoutes = require(moduleName).getRoutes;
+        console.log('moduleRoutes: ', getModuleRoutes());
+        if (typeof getModuleRoutes === 'function') {
+            routes = [...routes, ...getModuleRoutes()];
         }
     });
 

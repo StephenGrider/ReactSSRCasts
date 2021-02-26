@@ -4,7 +4,7 @@ import { DataResolver } from '@reactmono/core';
 /**
  * Google OpenId Auth routes params.
  */
-export default [
+export default () => ([
     {
         'path': '/api/auth/google',
         'method': 'GET',
@@ -41,4 +41,4 @@ export default [
             req.send(dataResolver.get('current_user').data);
         }
     }
-];
+]);
