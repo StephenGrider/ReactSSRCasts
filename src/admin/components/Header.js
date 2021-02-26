@@ -9,7 +9,7 @@ const Header = ({ auth }) => {
 
     const authButton = auth
         ? <a href="#">Logout</a>
-        : <a href="#">Login</a>;
+        : <a href={`/${adminPath}/signup`}>Sign Up</a>;
 
     return (
         <nav>
