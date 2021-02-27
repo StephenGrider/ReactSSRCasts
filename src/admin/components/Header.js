@@ -1,20 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { AppConfig } from '@reactmono/registry';
 
 const Header = ({ auth }) => {
     console.log('My auth status is', auth);
-    const adminPath = AppConfig.get('adminPath');
 
     const authButton = auth
         ? <a href="#">Logout</a>
-        : <a href={`/${adminPath}/signup`}>Sign Up</a>;
+        : <Link to={`/signup`}>Sign Up</Link>;
 
     return (
         <nav>
             <div className={'nav-wrapper'}>
-                <Link to={`/${adminPath}`} className={'brand-logo'}>Dashboard</Link>
+                <Link to={`/`} className={'brand-logo'}>Dashboard</Link>
                 <ul className={'right'}>
                     <li>{authButton}</li>
                 </ul>

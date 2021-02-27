@@ -1,3 +1,4 @@
+import adminConfig from '../admin/etc/config.json';
 import modules from './modules.json';
 
 /** Process modules list */
@@ -8,4 +9,7 @@ Object.keys(modules).map(moduleName => {
     }
 });
 
-export default { modules: activeModules };
+export default {
+    adminConfig,
+    modules: activeModules
+};

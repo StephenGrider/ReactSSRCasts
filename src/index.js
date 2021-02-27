@@ -21,7 +21,7 @@ initSession(app);
 import appConfigs from './etc';
 import { AppConfig } from '@reactmono/registry';
 AppConfig.set('modules', appConfigs.modules);
-let adminPath = config.get('adminPath');
+let adminPath = appConfigs.adminConfig.adminPath;
 const defaultAdminPath = 'admin'
 adminPath = adminPath ? adminPath : defaultAdminPath;
 AppConfig.set('adminPath', adminPath);

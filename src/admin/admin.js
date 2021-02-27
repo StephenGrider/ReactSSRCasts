@@ -10,6 +10,7 @@ import { renderRoutes } from 'react-router-config';
 import axios from 'axios';
 import getRoutes from './bootstrap/getRoutes';
 import reducers from './reducers';
+import config from './etc/config.json';
 
 const axiosInstance = axios.create({
     baseURL: '/api'
@@ -26,9 +27,10 @@ const store = createStore(
     applyMiddleware(thunk.withExtraArgument(storeParams))
 );
 
+const adminPath = config.adminPath;
 ReactDom.hydrate(
     <Provider store={store}>
-        <BrowserRouter>
+        <BrowserRouter basename={adminPath}>
             <div>{renderRoutes(getRoutes())}</div>
         </BrowserRouter>
     </Provider>,

@@ -5,6 +5,5 @@
   "mongo": {
     "mongoURI": "mongodb://root:example@localhost:27017/reactmono1?authSource=admin"
   },
-  "useSSR": true,
-  "adminPath": "backend"
+  "useSSR": true
 }
