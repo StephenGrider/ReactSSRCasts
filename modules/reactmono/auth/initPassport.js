@@ -1,9 +1,9 @@
 import passport from 'passport';
 import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
-import getUserModel from './model/User';
+import { Model } from '@reactmono/registry';
 
 export default () => {
-    const User = getUserModel();
+    const User = Model.get('users');
 
     passport.serializeUser((user, done) => {
         done(null, user.id);

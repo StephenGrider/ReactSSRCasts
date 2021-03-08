@@ -13,18 +13,33 @@ dbConnector();
 const app = express();
 app.use(express.static('public'));
 
-/** Auth implementation, Cookie Key pass */
-import { initSession } from '@reactmono/auth';
-initSession(app);
+/** Init body-parser middleware to parse form data */
+import bodyParser from 'body-parser';
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended : true}))
 
 /** Prepare global configurations */
+// ToDo move configuration processing to core module.
 import appConfigs from './etc';
 import { AppConfig } from '@reactmono/registry';
 AppConfig.set('modules', appConfigs.modules);
 let adminPath = appConfigs.adminConfig.adminPath;
+let adminApiRoute = appConfigs.adminConfig.apiRoute;
 const defaultAdminPath = 'admin'
 adminPath = adminPath ? adminPath : defaultAdminPath;
 AppConfig.set('adminPath', adminPath);
+const path = require('path');
+let adminApiPath = path.join('/', adminPath, adminApiRoute);
+console.log('Admin Api Path', adminApiPath);
+AppConfig.set('adminApiPath', adminApiPath);
+
+/** Init Models */
+import { modelProcessor } from '@reactmono/core';
+modelProcessor();
+
+/** Auth implementation, Cookie Key pass */
+import { initSession } from '@reactmono/auth';
+initSession(app);
 
 /** Process WebApi Router Configurations */
 import { routeProcessor } from '@reactmono/core';

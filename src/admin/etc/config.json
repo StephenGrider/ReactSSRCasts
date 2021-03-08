@@ -1,3 +1,4 @@
 {
-  "adminPath": "backend"
+  "adminPath": "backend",
+  "apiRoute": "api"
 }

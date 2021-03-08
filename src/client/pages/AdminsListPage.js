@@ -5,7 +5,9 @@ import requireAuth from '../components/hocs/requireAuth';
 
 class AdminsListPage extends Component {
     componentDidMount() {
-        this.props.fetchAdmins();
+        if (!this.props.admins.length) {
+            this.props.fetchAdmins();
+        }
     }
 
     renderAdmins() {

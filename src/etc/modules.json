@@ -1,4 +1,5 @@
 {
+  "@reactmono/admin-auth": 1,
   "@reactmono/auth": 1,
   "@reactmono/test-user": 1
 }

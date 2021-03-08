@@ -2,25 +2,44 @@ import passport from 'passport';
 import { DataResolver } from '@reactmono/core';
 
 /**
- * Google OpenId Auth routes params.
+ * OpenId Auth routes params.
  */
 export default () => ([
     {
-        'path': '/api/auth/google',
+        'path': '/api/auth/:method',
         'method': 'GET',
         'middleware': '',
-        'callback': passport.authenticate(
-            'google',
-            {
-                scope: ['profile', 'email']
-            })
+        'callback': (req, res, next) => {
+            if (req.user) {
+                /**
+                 * This will call passport.authenticate('facebook') if the route was /api/auth/facebook
+                 * and passport.authenticate('instagram') if the route was /api/auth/instagram
+                 */
+                passport.authenticate(
+                    req.params.method,
+                    {
+                        scope: ['profile', 'email']
+                    }
+                )(req, res, next);
+            } else {
+                passport.authorize(
+                    req.params.method,
+                    {
+                        scope: ['profile', 'email']
+                    }
+                )(req, res, next);
+            }
+        }
     },
     {
-        'path': '/api/auth/google/callback',
+        'path': '/api/auth/:method/callback',
         'method': 'GET',
-        'middleware': passport.authenticate('google'),
+        'middleware': '',
         'callback': (req, res, next) => {
-            res.redirect('/');
+            passport.authenticate(req.params.method, {
+                successRedirect: '/',
+                failureRedirect: '/signup'
+            })(req, res, next);
         }
     },
     {

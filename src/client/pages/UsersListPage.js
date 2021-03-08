@@ -6,7 +6,9 @@ import InnerUsersList from '../components/InnerUsersList';
 
 class UsersList extends Component {
     componentDidMount() {
-        this.props.fetchUsers();
+        if (!this.props.users) {
+            this.props.fetchUsers();
+        }
     }
 
     renderUsers() {

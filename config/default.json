@@ -5,5 +5,7 @@
   "mongo": {
     "mongoURI": "mongodb://root:example@localhost:27017/reactmono1?authSource=admin"
   },
-  "useSSR": true
+  "useSSR": true,
+  "jwtSecret": "mysecrettoken",
+  "adminSessionTime": 3600
 }
