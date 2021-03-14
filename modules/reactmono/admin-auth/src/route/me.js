@@ -1,26 +1,24 @@
-import { AppConfig, Model } from '@reactmono/registry';
 import adminMiddleware from '../middleware';
+import { RenderDataProvider} from '@reactmono/core';
 
 /**
  * @route GET backend/api/me
  * @desc Get Current Admin User
  */
-export default () => {
-    let adminApiPath = AppConfig.get('adminApiPath');
-
-    return {
-        'path': `${adminApiPath}/me`,
-        'method': 'GET',
-        'middleware': adminMiddleware.auth,
-        'callback': async (req, res, next) => {
-            try {
-                let Admin = Model.get('admins');
-                const admin = await Admin.findById(req.admin.id).select('-password');
-                res.json(admin);
-            } catch (err) {
-                console.error(err.message);
-                res.status(500).send('Server Error');
-            }
+export default () => ({
+    'path': `/me`,
+    'area': 'admin',
+    'method': 'GET',
+    'middleware': adminMiddleware.auth,
+    'callback': async (req, res, next) => {
+        try {
+            const renderDataProvider = new RenderDataProvider(req, 'admin');
+            let admin = await renderDataProvider.get('/me');
+            res.json(admin.data);
+        } catch (err) {
+            console.error(err.message);
+            res.status(500).send('Server Error');
         }
-    };
-};
+    },
+    'resolver': 'admin-auth.me'
+});

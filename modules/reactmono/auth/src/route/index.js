@@ -1,12 +1,12 @@
 import passport from 'passport';
-import { DataResolver } from '@reactmono/core';
+import { RenderDataProvider } from '@reactmono/core';
 
 /**
  * OpenId Auth routes params.
  */
 export default () => ([
     {
-        'path': '/api/auth/:method',
+        'path': '/auth/:method',
         'method': 'GET',
         'middleware': '',
         'callback': (req, res, next) => {
@@ -29,10 +29,11 @@ export default () => ([
                     }
                 )(req, res, next);
             }
-        }
+        },
+        'area': 'client'
     },
     {
-        'path': '/api/auth/:method/callback',
+        'path': '/auth/:method/callback',
         'method': 'GET',
         'middleware': '',
         'callback': (req, res, next) => {
@@ -40,24 +41,29 @@ export default () => ([
                 successRedirect: '/',
                 failureRedirect: '/signup'
             })(req, res, next);
-        }
+        },
+        'area': 'client'
     },
     {
-        'path': '/api/logout',
+        'path': '/logout',
         'method': 'GET',
         'middleware': '',
         'callback': (req, res, next) => {
             req.logout();
             res.redirect('/');
-        }
+        },
+        'area': 'client'
     },
     {
-        'path': '/api/current_user',
+        'path': '/current_user',
         'method': 'GET',
         'middleware': '',
-        'callback': (req, res, next) => {
-            let dataResolver = new DataResolver(req);
-            req.send(dataResolver.get('current_user').data);
-        }
+        'callback': async (req, res, next) => {
+            const renderDataProvider = new RenderDataProvider(req, 'client');
+            let currentUser = await renderDataProvider.get('/current_user');
+            res.send(currentUser.data);
+        },
+        'area': 'client',
+        'resolver': 'auth.current_user'
     }
 ]);

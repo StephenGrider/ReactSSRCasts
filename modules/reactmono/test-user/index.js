@@ -1,2 +1,3 @@
 require = require('esm')(module, {await: true});
-module.exports.getRoutes = require('./getRoutes').default;
+module.exports.route = require('./src/route').default;
+module.exports.dataProvider = require('./src/service/dataProvider').default;

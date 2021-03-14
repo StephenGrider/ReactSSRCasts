@@ -1,3 +1,6 @@
+/**
+ * Mongo Models Storage.
+ */
 class Model {
     constructor () {
         this.config = {};

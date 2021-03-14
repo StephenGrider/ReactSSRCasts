@@ -1,3 +1,6 @@
+/**
+ * Configurations storage.
+ */
 class AppConfig {
     constructor () {
         this.config = {};

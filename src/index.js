@@ -25,13 +25,21 @@ import { AppConfig } from '@reactmono/registry';
 AppConfig.set('modules', appConfigs.modules);
 let adminPath = appConfigs.adminConfig.adminPath;
 let adminApiRoute = appConfigs.adminConfig.apiRoute;
-const defaultAdminPath = 'admin'
+const defaultAdminPath = 'admin';
 adminPath = adminPath ? adminPath : defaultAdminPath;
 AppConfig.set('adminPath', adminPath);
 const path = require('path');
 let adminApiPath = path.join('/', adminPath, adminApiRoute);
 console.log('Admin Api Path', adminApiPath);
 AppConfig.set('adminApiPath', adminApiPath);
+
+let clientPath = appConfigs.clientConfig.clientPath;
+let clientApiRoute = appConfigs.clientConfig.apiRoute;
+let clientApiPath = clientPath.length
+    ? path.join('/', clientPath, clientApiRoute)
+    : path.join('/', clientApiRoute);
+console.log('Client Api Path', clientApiPath);
+AppConfig.set('clientApiPath', clientApiPath);
 
 /** Init Models */
 import { modelProcessor } from '@reactmono/core';
@@ -44,6 +52,10 @@ initSession(app);
 /** Process WebApi Router Configurations */
 import { routeProcessor } from '@reactmono/core';
 routeProcessor(app);
+
+/** Register DataProvider Methods */
+import { dataProviderProcessor } from '@reactmono/core';
+dataProviderProcessor();
 
 /**
  * Admin Area Client routers configuration.

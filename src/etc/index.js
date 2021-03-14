@@ -1,4 +1,5 @@
 import adminConfig from '../admin/etc/config.json';
+import clientConfig from '../client/etc/config.json';
 import modules from './modules.json';
 
 /** Process modules list */
@@ -11,5 +12,6 @@ Object.keys(modules).map(moduleName => {
 
 export default {
     adminConfig,
+    clientConfig,
     modules: activeModules
 };

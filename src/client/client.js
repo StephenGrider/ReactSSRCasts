@@ -10,9 +10,10 @@ import { renderRoutes } from 'react-router-config';
 import axios from 'axios';
 import getRoutes from './bootstrap/getRoutes';
 import reducers from './reducers';
+import config from './etc/config.json';
 
 const axiosInstance = axios.create({
-    baseURL: '/api'
+    baseURL: `/${config.apiRoute}`
 });
 
 const storeParams = {
