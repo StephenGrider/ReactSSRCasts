@@ -8,7 +8,7 @@ export default () => ([
         'middleware': '',
         'callback': async (req, res, next) => {
             const renderDataProvider = new RenderDataProvider(req, 'client');
-            let users = await renderDataProvider.get('/users');
+            let users = await renderDataProvider.get();
             res.send(users.data);
         },
         'area': 'client',
@@ -20,11 +20,23 @@ export default () => ([
         'middleware': '',
         'callback': async (req, res, next) => {
             const renderDataProvider = new RenderDataProvider(req, 'client');
-            let innerUsers = await renderDataProvider.get('/inner-users');
+            let innerUsers = await renderDataProvider.get();
             res.send(innerUsers.data);
         },
         'area': 'client',
         'resolver': 'test-user.inner-users'
+    },
+    {
+        'path': '/user/:id',
+        'method': 'GET',
+        'middleware': '',
+        'callback': async (req, res, next) => {
+            const renderDataProvider = new RenderDataProvider(req, 'client');
+            let renderData = await renderDataProvider.get();
+            res.send(renderData.data);
+        },
+        'area': 'client',
+        'resolver': 'test-user.userById'
     },
     {
         'path': '/admins',
@@ -32,7 +44,7 @@ export default () => ([
         'middleware': requireLogin,
         'callback': async (req, res, next) => {
             const renderDataProvider = new RenderDataProvider(req, 'client');
-            let admins = await renderDataProvider.get('/admins');
+            let admins = await renderDataProvider.get();
             res.send(admins.data);
         },
         'area': 'client',

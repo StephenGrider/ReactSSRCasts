@@ -3,8 +3,9 @@ import thunk from 'redux-thunk';
 import { RenderDataProvider } from '@reactmono/core';
 import reducers from '../reducers';
 
-export default (req) => {
-    const dataProvider = new RenderDataProvider(req, 'admin');
+/** Backend admin SSR Redux Store. */
+export default (req, apiRoutes) => {
+    const dataProvider = new RenderDataProvider(req, 'admin', apiRoutes);
     const storeParams = {
         type: 'backend',
         resolver: dataProvider

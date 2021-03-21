@@ -11,11 +11,15 @@ import getRoutes from './getRoutes';
  */
 export default (app) => {
     app.get('*', (req, res) => {
-        const store = createStore(req);
-
         let useSSR = config.get('useSSR');
-        const promises = matchRoutes(getRoutes(), req.path).map(({ route }) => {
-            return route.loadData && useSSR ? route.loadData(store) : null;
+        let apiRoutes = getRoutes();
+        let matchRoutesList = matchRoutes(apiRoutes, req.path);
+
+        const store = createStore(req, apiRoutes);
+
+        /** Prepare page SSR data loaders as promises */
+        const promises = matchRoutesList.map(({ route, match }) => {
+            return route.loadData && useSSR ? route.loadData(store, match) : null;
         }).map(promise => {
             if (promise) {
                 return new Promise((resolve, reject) => {

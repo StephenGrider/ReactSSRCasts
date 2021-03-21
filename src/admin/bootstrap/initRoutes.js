@@ -6,19 +6,22 @@ import getRoutes from './getRoutes';
 import { AppConfig } from '@reactmono/registry';
 
 /**
- * Frontend Client routers configuration.
+ * Frontend Admin routers configuration.
  * Process all other then api requests.
- * Backend frontend and browser frontend common start point.
+ * Admin area Backend frontend and browser frontend common start point.
  */
 export default (app) => {
     let adminPath = AppConfig.get('adminPath');
 
     app.get(`/${adminPath}*`, (req, res) => {
-        const store = createStore(req);
-
         let useSSR = config.get('useSSR');
-        const promises = matchRoutes(getRoutes(), req.path).map(({ route }) => {
-            return route.loadData && useSSR ? route.loadData(store) : null;
+        let apiRoutes = getRoutes();
+        let matchRoutesList = matchRoutes(apiRoutes, req.path);
+
+        const store = createStore(req, apiRoutes);
+
+        const promises = matchRoutesList.map(({route, match}) => {
+            return route.loadData && useSSR ? route.loadData(store, match) : null;
         }).map(promise => {
             if (promise) {
                 return new Promise((resolve, reject) => {

@@ -60,7 +60,7 @@ export default () => ([
         'middleware': '',
         'callback': async (req, res, next) => {
             const renderDataProvider = new RenderDataProvider(req, 'client');
-            let currentUser = await renderDataProvider.get('/current_user');
+            let currentUser = await renderDataProvider.get();
             res.send(currentUser.data);
         },
         'area': 'client',

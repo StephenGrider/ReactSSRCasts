@@ -13,7 +13,7 @@ export default () => ({
     'callback': async (req, res, next) => {
         try {
             const renderDataProvider = new RenderDataProvider(req, 'admin');
-            let admin = await renderDataProvider.get('/me');
+            let admin = await renderDataProvider.get();
             res.json(admin.data);
         } catch (err) {
             console.error(err.message);
