@@ -13,7 +13,7 @@ import reducers from './reducers';
 import config from './etc/config.json';
 
 const axiosInstance = axios.create({
-    baseURL: `/${config.apiRoute}`
+    baseURL: `/${config.adminPath}/${config.apiRoute}`
 });
 
 const storeParams = {

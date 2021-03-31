@@ -68,7 +68,8 @@ class RenderDataProvider {
      * But for data consistency purpose it's recommended to use DataProvider response for frontend router too.
      */
     get = async (path) => {
-        this.isBackendSSR = this.request.route.path === '*';
+        let adminPath = AppConfig.get('adminPath');
+        this.isBackendSSR = ['*', `/${adminPath}*`].includes(this.request.route.path);
         console.log('isBackendSSR: ', this.isBackendSSR);
 
         /**

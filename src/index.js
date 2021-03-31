@@ -4,6 +4,7 @@ dotenv.config({ path: `${process.env.NODE_ENV}.env`});
 
 import express from 'express';
 import config from 'config';
+import cookieParser from 'cookie-parser';
 
 /** Run DB connection */
 import { dbConnector } from '@reactmono/core';
@@ -12,6 +13,7 @@ dbConnector();
 /** Create application */
 const app = express();
 app.use(express.static('public'));
+app.use(cookieParser());
 
 /** Init body-parser middleware to parse form data */
 import bodyParser from 'body-parser';

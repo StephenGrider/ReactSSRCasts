@@ -1,12 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { logout } from '../actions/auth';
 
-const Header = ({ auth }) => {
-    console.log('My auth status is', auth);
+const Header = ({ auth, logout }) => {
+    console.log('Header auth: ', auth);
 
-    const authButton = auth
-        ? <a href="#">Logout</a>
+    const handleLogout = (e) => {
+        e.preventDefault();
+        logout();
+    };
+
+    const authButton = auth.admin
+        ? <a href="#" onClick={handleLogout}>Logout</a>
         : <Link to={`/signup`}>Sign Up</Link>;
 
     return (
@@ -25,4 +31,4 @@ const mapStateToProps = ({ auth }) => {
     return { auth };
 };
 
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps, { logout })(Header);
