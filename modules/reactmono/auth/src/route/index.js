@@ -1,5 +1,4 @@
 import passport from 'passport';
-import { RenderDataProvider } from '@reactmono/core';
 
 /**
  * OpenId Auth routes params.
@@ -59,11 +58,10 @@ export default () => ([
         'method': 'GET',
         'middleware': '',
         'callback': async (req, res, next) => {
-            const renderDataProvider = new RenderDataProvider(req, 'client');
-            let currentUser = await renderDataProvider.get();
-            res.send(currentUser.data);
+            let currentUser = req.user;
+            res.send(currentUser);
         },
-        'area': 'client',
-        'resolver': 'auth.current_user'
+        'area': 'client'
     }
 ]);
+

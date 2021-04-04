@@ -15,7 +15,7 @@ export default (app) => {
         let apiRoutes = getRoutes();
         let matchRoutesList = matchRoutes(apiRoutes, req.path);
 
-        const store = createStore(req, apiRoutes);
+        const store = createStore(req);
 
         /** Prepare page SSR data loaders as promises */
         const promises = matchRoutesList.map(({ route, match }) => {

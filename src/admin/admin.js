@@ -10,10 +10,10 @@ import { renderRoutes } from 'react-router-config';
 import axios from 'axios';
 import getRoutes from './bootstrap/getRoutes';
 import reducers from './reducers';
-import config from './etc/config.json';
+import { getApiRoute, getAdminPath } from './utils/config';
 
 const axiosInstance = axios.create({
-    baseURL: `/${config.adminPath}/${config.apiRoute}`
+    baseURL: `/${getAdminPath()}/${getApiRoute()}`
 });
 
 const storeParams = {
@@ -27,10 +27,9 @@ const store = createStore(
     applyMiddleware(thunk.withExtraArgument(storeParams))
 );
 
-const adminPath = config.adminPath;
 ReactDom.hydrate(
     <Provider store={store}>
-        <BrowserRouter basename={adminPath}>
+        <BrowserRouter basename={getAdminPath()}>
             <div>{renderRoutes(getRoutes())}</div>
         </BrowserRouter>
     </Provider>,

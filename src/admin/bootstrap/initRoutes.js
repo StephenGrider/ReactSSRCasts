@@ -18,7 +18,7 @@ export default (app) => {
         let apiRoutes = getRoutes();
         let matchRoutesList = matchRoutes(apiRoutes, req.path);
 
-        const store = createStore(req, apiRoutes);
+        const store = createStore(req);
 
         const promises = matchRoutesList.map(({route, match}) => {
             return route.loadData && useSSR ? route.loadData(store, match) : null;

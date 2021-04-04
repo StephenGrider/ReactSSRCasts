@@ -1,5 +1,5 @@
 import adminMiddleware from '../middleware';
-import { RenderDataProvider} from '@reactmono/core';
+import { Model } from '@reactmono/registry';
 
 /**
  * @route GET backend/api/me
@@ -12,13 +12,13 @@ export default () => ({
     'middleware': adminMiddleware.auth,
     'callback': async (req, res, next) => {
         try {
-            const renderDataProvider = new RenderDataProvider(req, 'admin');
-            let admin = await renderDataProvider.get();
-            res.json(admin.data);
+            let Admin = Model.get('admins');
+            let admin = await Admin.findById(req.admin.id).select('-password');
+
+            res.json(admin);
         } catch (err) {
             console.error(err.message);
             res.status(500).send('Server Error');
         }
-    },
-    'resolver': 'admin-auth.me'
+    }
 });

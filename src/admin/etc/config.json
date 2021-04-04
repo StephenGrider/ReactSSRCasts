@@ -1,4 +1,6 @@
 {
   "adminPath": "backend",
-  "apiRoute": "api"
+  "apiRoute": "api",
+  "tokenCookie": "x-auth-token",
+  "adminSessionExpireTime": "3600"
 }

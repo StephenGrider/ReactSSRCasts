@@ -4,6 +4,7 @@ import {
     AUTH_ERROR,
     LOGOUT
 } from '../actions/types';
+import { deleteAdminTokenCookies, setAdminTokenCookie } from '../utils/cookie';
 
 export default (state = {}, action) => {
     const { type, payload } = action;
@@ -15,7 +16,8 @@ export default (state = {}, action) => {
 
         case LOGIN_SUCCESS:
             if (document) {
-                document.cookie = `x-auth-token=${encodeURIComponent(payload.token)}`;
+                deleteAdminTokenCookies();
+                setAdminTokenCookie(payload.token);
             }
 
             return {
@@ -27,7 +29,7 @@ export default (state = {}, action) => {
 
         case AUTH_ERROR:
         case LOGOUT:
-            document.cookie = `x-auth-token=''`;
+            deleteAdminTokenCookies();
 
             return {
                 ...state,

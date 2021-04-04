@@ -5,4 +5,4 @@ module.exports.route = require('./src/route').default;
 module.exports.model = {
     'users': require('./src/model/User').default
 };
-module.exports.dataProvider = require('./src/service/dataProvider').default;
+module.exports.getAdmins = require('./src/service/testAdmins').default;

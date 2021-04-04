@@ -55,10 +55,6 @@ initSession(app);
 import { routeProcessor } from '@reactmono/core';
 routeProcessor(app);
 
-/** Register DataProvider Methods */
-import { dataProviderProcessor } from '@reactmono/core';
-dataProviderProcessor();
-
 /**
  * Admin Area Client routers configuration.
  * Process all other then api requests.

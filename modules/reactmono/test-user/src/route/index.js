@@ -1,5 +1,7 @@
 import { requireLogin } from '@reactmono/auth';
-import { RenderDataProvider } from '@reactmono/core';
+import getTestUsers from '../service/testUsers';
+import getTestInnerUsers from '../service/testInnerUsers';
+import { getAdmins } from '@reactmono/auth';
 
 export default () => ([
     {
@@ -7,47 +9,38 @@ export default () => ([
         'method': 'GET',
         'middleware': '',
         'callback': async (req, res, next) => {
-            const renderDataProvider = new RenderDataProvider(req, 'client');
-            let users = await renderDataProvider.get();
-            res.send(users.data);
+            let users = await getTestUsers();
+            res.send(users);
         },
-        'area': 'client',
-        'resolver': 'test-user.users'
+        'area': 'client'
     },
     {
         'path': '/inner-users',
         'method': 'GET',
         'middleware': '',
         'callback': async (req, res, next) => {
-            const renderDataProvider = new RenderDataProvider(req, 'client');
-            let innerUsers = await renderDataProvider.get();
-            res.send(innerUsers.data);
+            let innerUsers = await getTestInnerUsers();
+            res.send(innerUsers);
         },
-        'area': 'client',
-        'resolver': 'test-user.inner-users'
+        'area': 'client'
     },
     {
         'path': '/user/:id',
         'method': 'GET',
         'middleware': '',
         'callback': async (req, res, next) => {
-            const renderDataProvider = new RenderDataProvider(req, 'client');
-            let renderData = await renderDataProvider.get();
-            res.send(renderData.data);
+            res.send(req.params.id);
         },
-        'area': 'client',
-        'resolver': 'test-user.userById'
+        'area': 'client'
     },
     {
         'path': '/admins',
         'method': 'GET',
         'middleware': requireLogin,
         'callback': async (req, res, next) => {
-            const renderDataProvider = new RenderDataProvider(req, 'client');
-            let admins = await renderDataProvider.get();
-            res.send(admins.data);
+            let admins = await getAdmins();
+            res.send(admins);
         },
-        'area': 'client',
-        'resolver': 'auth.admins'
+        'area': 'client'
     }
 ]);

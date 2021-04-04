@@ -1,4 +1,4 @@
-import { AppConfig, RouteDataResolver } from '@reactmono/registry';
+import { AppConfig } from '@reactmono/registry';
 
 /** Process Api Route Configurations */
 export default (app) => {
@@ -45,9 +45,5 @@ export default (app) => {
         }
 
         console.log('Registered route:', apiPath)
-        let routeDataResolver = routeData.resolver;
-        if (routeDataResolver) {
-            RouteDataResolver.set(routePath, routeArea, routeDataResolver);
-        }
     });
 };
