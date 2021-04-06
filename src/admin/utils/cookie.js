@@ -11,6 +11,6 @@ export const deleteAdminTokenCookies = () => {
 
 export const setAdminTokenCookie = (value) => {
     let date = new Date();
-    date.setTime(date.getTime() + getAdminSessionExpireTime());
+    date.setTime(date.getTime() + getAdminSessionExpireTime() * 1000);
     document.cookie = `${getTokenCookieName()}=${encodeURIComponent(value)};expires=${date.toUTCString()};path=/${getAdminPath()}`;
 };
