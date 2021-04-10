@@ -60,7 +60,7 @@ routeProcessor(app);
  * Process all other then api requests.
  * Backend frontend and browser frontend common start point.
  */
-import adminRoutes from './admin/bootstrap/initRoutes';
+import adminRoutes from './admin/ssr/initRoutes';
 adminRoutes(app);
 
 /**
@@ -68,7 +68,7 @@ adminRoutes(app);
  * Process all other then api requests.
  * Backend frontend and browser frontend common start point.
  */
-import clientRoutes from './client/bootstrap/initRoutes';
+import clientRoutes from './client/ssr/initRoutes';
 clientRoutes(app);
 
 /** Start application */

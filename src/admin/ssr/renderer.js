@@ -5,16 +5,23 @@ import { Provider } from 'react-redux';
 import { renderRoutes } from 'react-router-config';
 import serialize from 'serialize-javascript';
 import { Helmet } from 'react-helmet';
-import getRoutes from './getRoutes';
+import getRoutes from '../routes';
 import config from 'config';
+import { AppConfig } from '@reactmono/registry';
 
+/**
+ * Start point for node.js page rendering.
+ * - React application rendering on backend.
+ * - Process page <head> tag elements.
+ */
 export default (req, store, context) => {
     let useSSR = config.get('useSSR');
+    const adminPath = AppConfig.get('adminPath');
 
     const content = useSSR
         ? renderToString(
             <Provider store={store}>
-                <StaticRouter location={req.path} context={context}>
+                <StaticRouter basename={adminPath} location={req.path} context={context}>
                     <div>{renderRoutes(getRoutes())}</div>
                 </StaticRouter>
             </Provider>)
@@ -33,12 +40,13 @@ export default (req, store, context) => {
             <head>
                 ${helmet.title.toString()}
                 ${helmet.meta.toString()}
+                <base href="/${adminPath}/">
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
             </head>
             <body>
                 <div id="root">${content}</div>
                 ${initialState}
-                <script src="/bundle.js"></script>
+                <script src="/admin-bundle.js"></script>
             </body>
         </html>
     `;

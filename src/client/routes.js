@@ -1,14 +1,14 @@
 import React from 'react';
-import App from '../App';
-import HomePage from '../pages/HomePage';
-import UsersListPage from '../pages/UsersListPage';
-import UserPage from '../pages/UserPage';
-import AdminsListPage from '../pages/AdminsListPage';
-import NotFoundPage from '../pages/NotFoundPage';
-import adminsListPageLoader from '../loaders/adminsListPage';
-import usersListPageLoader from '../loaders/usersListPage';
-import usersPageLoader from '../loaders/userPage';
-import defaultLoader from '../loaders/defaultLoader';
+import App from './App';
+import HomePage from './pages/HomePage';
+import UsersListPage from './pages/UsersListPage';
+import UserPage from './pages/UserPage';
+import AdminsListPage from './pages/AdminsListPage';
+import NotFoundPage from './pages/NotFoundPage';
+import adminsListPageLoader from './loaders/adminsListPage';
+import usersListPageLoader from './loaders/usersListPage';
+import usersPageLoader from './loaders/userPage';
+import defaultLoader from './loaders/defaultLoader';
 
 export default () => ([
     {

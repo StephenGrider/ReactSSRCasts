@@ -2,7 +2,7 @@ import config from 'config';
 import { matchRoutes } from 'react-router-config';
 import createStore from './createStore';
 import renderer from './renderer';
-import getRoutes from './getRoutes';
+import getRoutes from '../routes';
 
 /**
  * Frontend Client routers configuration.
