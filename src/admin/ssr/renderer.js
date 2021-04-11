@@ -17,6 +17,7 @@ import { AppConfig } from '@reactmono/registry';
 export default (req, store, context) => {
     let useSSR = config.get('useSSR');
     const adminPath = AppConfig.get('adminPath');
+    let stylesPath = `/styles/${config.get('design.admin')}/styles.css`;
 
     const content = useSSR
         ? renderToString(
@@ -33,7 +34,7 @@ export default (req, store, context) => {
         ? `<script>
             window.INITIAL_STATE = ${serialize(store.getState())}
         </script>`
-        : ''
+        : '';
 
     return `
         <html>
@@ -42,6 +43,7 @@ export default (req, store, context) => {
                 ${helmet.meta.toString()}
                 <base href="/${adminPath}/">
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+                <link rel="stylesheet" href="${stylesPath}">
             </head>
             <body>
                 <div id="root">${content}</div>

@@ -10,6 +10,7 @@ import config from 'config';
 
 export default (req, store, context) => {
     let useSSR = config.get('useSSR');
+    let stylesPath = `/styles/${config.get('design.client')}/styles.css`;
 
     const content = useSSR
         ? renderToString(
@@ -34,6 +35,7 @@ export default (req, store, context) => {
                 ${helmet.title.toString()}
                 ${helmet.meta.toString()}
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+                <link rel="stylesheet" href="${stylesPath}">
             </head>
             <body>
                 <div id="root">${content}</div>

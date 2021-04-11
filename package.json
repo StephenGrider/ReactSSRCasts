@@ -4,8 +4,8 @@
     "description": "React SSR, Server side rendering React Redux framework",
     "main": "index.js",
     "scripts": {
-        "prod": "npx babel ./src --out-dir ./generated; npx webpack --config webpack.client.js; NODE_ENV=production node ./generated/index.js",
-        "dev": "npx babel ./src --out-dir ./generated --source-maps; concurrently \"npx babel --watch ./src --out-dir ./generated --source-maps\" \"npx webpack --config webpack.dev-client.js --watch\" \"npx webpack --config webpack.dev-admin.js --watch\" \"NODE_ENV=development nodemon --inspect ./generated/index.js\""
+        "prod": "npx babel ./src --out-dir ./generated; npx sass src/design:public/styles; npx webpack --config webpack.client.js; NODE_ENV=production node ./generated/index.js",
+        "dev": "npx babel ./src --out-dir ./generated --source-maps; concurrently \"npx babel --watch ./src --out-dir ./generated --source-maps\" \"npx sass --watch src/design:public/styles\" \"npx webpack --config webpack.dev-client.js --watch\" \"npx webpack --config webpack.dev-admin.js --watch\" \"NODE_ENV=development nodemon --inspect ./generated/index.js\""
     },
     "author": "",
     "license": "ISC",
@@ -67,12 +67,14 @@
         "babel-loader": "^8.2.2",
         "babel-plugin-inline-json-import": "^0.3.2",
         "babel-plugin-module-resolver": "^4.1.0",
+        "babel-plugin-root-import": "^6.6.0",
         "babel-plugin-transform-class-properties": "^6.24.1",
         "babel-watch": "^7.3.0",
         "clean-webpack-plugin": "^3.0.0",
         "eslint": "^7.15.0",
         "html-webpack-plugin": "^5.2.0",
         "resolve-cwd": "^2.0.0",
+        "sass": "^1.32.8",
         "source-map-loader": "^2.0.1",
         "webpack-cli": "^4.5.0",
         "webpack-dev-server": "^3.11.0"

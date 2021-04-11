@@ -4,8 +4,6 @@ production.env
 .idea
 generated/*
 node_modules
-public/admin-bundle.js
-public/bundle.js
-public/bundle.js.LICENSE.txt
+public/
 server-build/*
 dockervolume/*

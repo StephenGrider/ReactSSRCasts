@@ -1,5 +1,6 @@
 const path = require('path');
 module.exports = {
+    mode: process.env.NODE_ENV,
     // Tell webpack to run babel on every file it runs through
     module: {
         rules: [

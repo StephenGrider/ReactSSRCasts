@@ -7,5 +7,9 @@
   },
   "useSSR": true,
   "jwtSecret": "mysecrettoken",
-  "adminSessionTime": 3600
+  "adminSessionTime": 3600,
+  "design": {
+    "admin": "admin-base",
+    "client": "client-base"
+  }
 }
