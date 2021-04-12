@@ -22,27 +22,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended : true}))
 
 /** Prepare global configurations */
-// ToDo move configuration processing to core module.
 import appConfigs from './etc';
-import { AppConfig } from '@reactmono/registry';
-AppConfig.set('modules', appConfigs.modules);
-let adminPath = appConfigs.adminConfig.adminPath;
-let adminApiRoute = appConfigs.adminConfig.apiRoute;
-const defaultAdminPath = 'admin';
-adminPath = adminPath ? adminPath : defaultAdminPath;
-AppConfig.set('adminPath', adminPath);
-const path = require('path');
-let adminApiPath = path.join('/', adminPath, adminApiRoute);
-console.log('Admin Api Path', adminApiPath);
-AppConfig.set('adminApiPath', adminApiPath);
-
-let clientPath = appConfigs.clientConfig.clientPath;
-let clientApiRoute = appConfigs.clientConfig.apiRoute;
-let clientApiPath = clientPath.length
-    ? path.join('/', clientPath, clientApiRoute)
-    : path.join('/', clientApiRoute);
-console.log('Client Api Path', clientApiPath);
-AppConfig.set('clientApiPath', clientApiPath);
+import { initAppConfigs } from '@reactmono/core';
+initAppConfigs(appConfigs);
 
 /** Init Models */
 import { modelProcessor } from '@reactmono/core';
