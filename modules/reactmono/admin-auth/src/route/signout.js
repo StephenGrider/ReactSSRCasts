@@ -1,14 +1,14 @@
-import adminMiddleware from '../middleware';
 import { Model } from '@reactmono/registry';
+import adminMiddleware from '../middleware';
 
 /**
- * @route GET backend/api/me
- * @desc Get Current Admin User
+ * @route POST backend/api/signout
+ * @desc Admin Logout Route
  */
 export default () => ({
-    'path': `/me`,
+    'path': `/signout`,
     'area': 'admin',
-    'method': 'GET',
+    'method': 'POST',
     'middleware': adminMiddleware.auth,
     'callback': async (req, res, next) => {
         try {
@@ -18,10 +18,14 @@ export default () => ({
             if (admin.secret !== req.admin.secret) {
                 return res.status(401).json({data: {errors: ['Authorization denied, incorrect secret key']}});
             }
-            res.json(admin);
+
+            admin.secret = '';
+            await admin.save();
+
+            res.status(200).json({data: {message: 'Logout success'}});
         } catch (err) {
             console.error(err.message);
-            res.status(500).send('Server Error');
+            res.status(500).send('Server error');
         }
     }
 });

@@ -15,6 +15,9 @@ export default () => {
             type: String,
             required: true
         },
+        secret: {
+            type: String
+        },
         date: {
             type: Date,
             default: Date.now

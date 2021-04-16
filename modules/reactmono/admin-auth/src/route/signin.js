@@ -3,6 +3,7 @@ import config from 'config';
 import { check, validationResult } from 'express-validator';
 import jwt from 'jsonwebtoken';
 import { Model } from '@reactmono/registry';
+import secretGen from '../service/secretGen';
 
 /**
  * @route POST backend/api/signin
@@ -41,24 +42,32 @@ export default () => ({
                 });
             }
 
+            // Pass additional secret in token payload
+            let secretKey = secretGen();
+
             // Return jsonwebtoken
             const payload = {
                 admin: {
-                    id: admin.id
+                    id: admin.id,
+                    secret: secretKey
                 }
             };
 
             let adminSessionTime = parseInt(config.get('adminSessionTime'));
             let jwtSecret = config.get('jwtSecret');
+
             jwt.sign(
                 payload,
                 jwtSecret,
                 {expiresIn: adminSessionTime},
-                (err, token) => {
+                async (err, token) => {
                     if (err) {
                         throw err;
                     }
-                    res.json({token});
+                    admin.secret = secretKey;
+                    await admin.save();
+
+                    res.json({token, admin_id: admin.id});
                 }
             );
         } catch (err) {

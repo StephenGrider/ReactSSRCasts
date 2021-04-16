@@ -1,5 +1,6 @@
 import signin from './signin';
 import signup from './signup';
+import signout from './signout';
 import me from './me';
 
 /**
@@ -8,5 +9,6 @@ import me from './me';
 export default () => ([
     signin(),
     signup(),
+    signout(),
     me()
 ]);

@@ -38,6 +38,7 @@
         "config": "^3.3.3",
         "cookie-parser": "^1.4.5",
         "cookie-session": "^1.4.0",
+        "crypto": "^1.0.1",
         "dotenv": "^8.2.0",
         "esm": "^3.2.25",
         "express": "^4.17.1",
@@ -63,6 +64,7 @@
         "redux": "3.7.2",
         "redux-thunk": "2.2.0",
         "serialize-javascript": "^5.0.1",
+        "uuid": "^3.4.0",
         "webpack": "^5.23.0",
         "webpack-merge": "4.1.0",
         "webpack-node-externals": "1.6.0"

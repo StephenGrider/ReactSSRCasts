@@ -37,8 +37,18 @@ export const submitSignIn = (formData) => async (dispatch, getState, {type, reso
     }
 };
 
-export const logout = () => (dispatch) => {
-    dispatch({
-        type: LOGOUT
-    });
+export const logout = () => async (dispatch, getState, {type, resolver}) => {
+    try {
+        await resolver.post('/signout');
+
+        dispatch({
+            type: LOGOUT
+        });
+    } catch (err) {
+        console.error('logout error: ', err);
+
+        dispatch({
+            type: LOGOUT
+        });
+    }
 };
