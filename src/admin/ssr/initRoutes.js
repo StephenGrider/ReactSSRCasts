@@ -14,7 +14,7 @@ export default (app) => {
     let adminPath = AppConfig.get('adminPath');
 
     app.get(`/${adminPath}*`, (req, res) => {
-        let useSSR = config.get('useSSR');
+        let useSSR = config.get('useAdminSSR');
         let apiRoutes = getRoutes();
         let matchRoutesList = matchRoutes(apiRoutes, req.path);
 

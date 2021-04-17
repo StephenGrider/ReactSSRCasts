@@ -15,7 +15,7 @@ import { AppConfig } from '@reactmono/registry';
  * - Process page <head> tag elements.
  */
 export default (req, store, context) => {
-    let useSSR = config.get('useSSR');
+    let useSSR = config.get('useAdminSSR');
     const adminPath = AppConfig.get('adminPath');
     let stylesPath = `/styles/${config.get('design.admin')}/styles.css`;
 
