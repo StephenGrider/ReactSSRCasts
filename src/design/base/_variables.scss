@@ -1,5 +1,63 @@
 // Colors.
-$c-red: red;
-$c-blue: blue;
-$c-green: green;
-$c-black: black;
+$c-white: #fff;
+$c-black: #000;
+$c-red: $red-500;
+$c-pink: $pink-500;
+$c-purple: $purple-500;
+$c-deepPurple: $deepPurple-500;
+$c-indigo: $indigo-500;
+$c-blue: $blue-500;
+$c-lightBlue: $lightBlue-500;
+$c-cyan: $cyan-500;
+$c-teal: $teal-500;
+$c-green: $green-500;
+$c-lightGreen: $lightGreen-500;
+$lime: $lime-500;
+$c-yellow: $yellow-500;
+$c-amber: $amber-500;
+$c-orange: $orange-500;
+$c-deepOrange: $deepOrange-500;
+$c-brown: $brown-500;
+$c-grey: $grey-500;
+$c-blueGrey: $blueGrey-500;
+$c-text: rgba(0,0,0,0.87);
+
+// Space.
+$space-xxxl: 48px;
+$space-xxl: 32px;
+$space-xl: 24px;
+$space-l: 20px;
+$space-ls: 18px;
+$space-base: 16px;
+$space-sl: 14px;
+$space-s: 12px;
+$space-xs: 8px;
+$space-xxs: 4px;
+$space-xxxs: 2px;
+
+// Fonts.
+$icon-font: "Material Icons";
+$font-ubuntu: Ubuntu;
+$base-font: $font-ubuntu, Arial, Helvetica, sans-serif;
+
+// Font Size.
+$font-size-xxxxxxl: 30px;
+$font-size-xxxxxl: 28px;
+$font-size-xxxxl: 26px;
+$font-size-xxxll: 24px;
+$font-size-xxxl: 22px;
+$font-size-xxl: 20px;
+$font-size-xl: 18px;
+$font-size-l: 16px;
+$font-size-sl: 15px;
+$font-size-base: 14px;
+$font-size-s: 13px;
+$font-size-xs: 12px;
+$font-size-xxs: 11px;
+
+// Font Weight
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-semibold: 500;
+$font-weight-bold: 600;
+$font-weight-strong: 700;

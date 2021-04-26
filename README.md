@@ -35,10 +35,10 @@ ReactMono uses React and Redux for client side and nodejs with Express.js for se
 
 #### Create Module
 ```
-cd src/modules/reactmono/test-user/ //example path
+cd modules/reactmono/test-user/ //example path
 npm init -y
 ```
-#### Istall Module
+#### Install Module
 ```
-npm install --save ./src/modules/reactmono/test-user
+npm install --save ./modules/reactmono/test-user
 ```

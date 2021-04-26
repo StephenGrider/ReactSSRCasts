@@ -1,9 +1,12 @@
+import { alert } from '@reactmono/components';
 import {
     FETCH_CURRENT_ADMIN,
     LOGIN_SUCCESS,
     LOGIN_FAIL,
     LOGOUT
 } from './types';
+
+const {action: {setErrorAlert}} = alert;
 
 export const fetchCurrentAdmin = () => async (dispatch, getState, {type, resolver}) => {
     try {
@@ -14,7 +17,7 @@ export const fetchCurrentAdmin = () => async (dispatch, getState, {type, resolve
             payload: res
         });
     } catch (err) {
-        console.error('fetchCurrentAdmin error: ', err);
+        console.warn('Login Required');
     }
 };
 
@@ -30,10 +33,11 @@ export const submitSignIn = (formData) => async (dispatch, getState, {type, reso
         dispatch(fetchCurrentAdmin());
     } catch (err) {
         console.error('submitSignIn error: ', err);
-
         dispatch({
             type: LOGIN_FAIL,
         });
+
+        dispatch(setErrorAlert(`Sign in Error`, 7));
     }
 };
 
@@ -46,6 +50,7 @@ export const logout = () => async (dispatch, getState, {type, resolver}) => {
         });
     } catch (err) {
         console.error('logout error: ', err);
+        dispatch(setErrorAlert('Logout Error'));
 
         dispatch({
             type: LOGOUT

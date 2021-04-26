@@ -1,0 +1,116 @@
+.alerts-area {
+    bottom: 0;
+    overflow: hidden;
+    padding: $space-l;
+    position: absolute;
+    right: 0;
+}
+
+.alert {
+    border-left: 4px solid;
+    border-radius: 5px;
+    display: flex;
+    margin-bottom: $space-s;
+    min-height: 65px;
+    min-width: 365px;
+    position: relative;
+    transition: all 0.2s linear;
+
+    &.alert-error {
+        border-left-color: $c-red;
+        box-shadow: 1px 0 4px $c-red;
+    }
+
+    &.alert-warning {
+        border-left-color: $c-orange;
+        box-shadow: 1px 0 4px $c-orange;
+    }
+
+    &.alert-info {
+        border-left-color: $c-blue;
+        box-shadow: 1px 0 4px $c-blue;
+    }
+
+    &.alert-success {
+        border-left-color: $c-green;
+        box-shadow: 1px 0 4px $c-green;
+    }
+
+    .icon-error {
+        color: $c-red;
+    }
+
+    .icon-warning {
+        color: $c-orange;
+    }
+
+    .icon-info {
+        color: $c-blue;
+    }
+
+    .icon-success {
+        color: $c-green;
+    }
+
+    .alert-column {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .alert-row {
+        width: 100%;
+    }
+
+    .alert-title {
+        font-weight: $font-weight-bold;
+        text-transform: capitalize;
+    }
+
+    .alert-close {
+        flex: 1;
+    }
+
+    .icon-wrapper {
+        flex: 1.3;
+    }
+
+    .alert-message {
+        flex: 6;
+    }
+
+    .alert-row {
+        display: flex;
+    }
+
+    .alert-row.alert-title {
+        align-items: flex-end;
+        padding-top: $space-xs;
+    }
+
+    .alert-column.alert-close {
+        align-items: center;
+        justify-content: flex-end;
+    }
+
+    .alert-column.icon-wrapper {
+        align-items: center;
+        justify-content: center;
+    }
+
+    .button-close:before {
+        content: $icon-close;
+        font-family: $icon-font;
+        font-size: $font-size-xxl;
+        display: block;
+        width: $space-xl;
+        height: $space-xl;
+    }
+
+    .button-close:hover:before {
+        font-size: $font-size-xxxl;
+    }
+
+    .button-close:active:before {
+        font-size: $font-size-xxl;
+    }
+}

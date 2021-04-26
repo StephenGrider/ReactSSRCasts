@@ -26,6 +26,7 @@
         "@babel/polyfill": "^7.12.1",
         "@reactmono/admin-auth": "file:modules/reactmono/admin-auth",
         "@reactmono/auth": "file:modules/reactmono/auth",
+        "@reactmono/components": "file:components/reactmono/lib",
         "@reactmono/core": "file:modules/reactmono/core",
         "@reactmono/registry": "file:modules/reactmono/registry",
         "@reactmono/test-user": "file:modules/reactmono/test-user",

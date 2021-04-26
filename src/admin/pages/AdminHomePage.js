@@ -15,7 +15,7 @@ const AdminHome = ({ admin, fetchCurrentAdmin, submitSignIn }) => {
     };
 
     const getLoginForm = () => (
-        <div className={'center-align'} style={{marginTop: '200px'}}>
+        <div className={'login-form center-align'} style={{marginTop: '200px'}}>
             <h3>Welcome</h3>
             <p>Admin Area</p>
             <form onSubmit={handleSubmit(onSubmit)}>

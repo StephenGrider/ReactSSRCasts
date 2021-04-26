@@ -1,0 +1,16 @@
+html {
+    color: $c-text;
+    font-size: $font-size-base;
+    font-family: $base-font;
+    line-height: 1.5;
+    font-weight: $font-weight-normal;
+    -webkit-text-size-adjust: 100%;
+}
+
+a {
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
