@@ -1,4 +1,4 @@
-## ReactMono
+## ReactMono v0.1.1
 
 ### React Redux Express SSR Framework
 ReactMono is completely free and open source framework.
