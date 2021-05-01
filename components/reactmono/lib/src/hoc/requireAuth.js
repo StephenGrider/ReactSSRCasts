@@ -9,7 +9,7 @@ export default (ChildComponent) => {
         || <ChildComponent {...props} />
     );
 
-    function mapStateToProps({ auth }) {
+    const mapStateToProps = ({ auth }) => {
         return { auth };
     }
 

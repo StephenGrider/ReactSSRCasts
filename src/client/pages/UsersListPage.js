@@ -1,42 +1,36 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { fetchUsers } from '../actions/fetchUsers';
 import { Helmet } from 'react-helmet';
 import InnerUsersList from '../components/InnerUsersList';
 
-class UsersList extends Component {
-    componentDidMount() {
-        if (!this.props.users) {
-            this.props.fetchUsers();
+const UsersList = ({ users, fetchUsers }) => {
+    const head = () => (
+        <Helmet>
+            <title>{`${users ? users.length : ''} Users Loaded`}</title>
+            <meta property={'og:title'} content={'Users App'} />
+        </Helmet>
+    );
+
+    const renderUsers = () => users && users.length > 0 && users.map(user => {
+        return <li key={user.id}>{user.name}</li>;
+    });
+
+    useEffect(() => {
+        if (!users) {
+            fetchUsers();
         }
-    }
+    }, []);
 
-    renderUsers() {
-        return this.props.users && this.props.users.length > 0 && this.props.users.map(user => {
-            return <li key={user.id}>{user.name}</li>;
-        });
-    }
-
-    head() {
-        return (
-            <Helmet>
-                <title>{`${this.props.users ? this.props.users.length : ''} Users Loaded`}</title>
-                <meta property={'og:title'} content={'Users App'} />
-            </Helmet>
-        );
-    }
-
-    render() {
-        return (
-            <div>
-                {this.head()}
-                <h4>Here's a big list of users:</h4>
-                <ul>{this.renderUsers()}</ul>
-                <InnerUsersList />
-            </div>
-        )
-    }
-}
+    return (
+        <div>
+            {head()}
+            <h4>Here's a big list of users:</h4>
+            <ul>{renderUsers()}</ul>
+            <InnerUsersList />
+        </div>
+    )
+};
 
 function mapStateToProps(state) {
     return { users: state.users.users };

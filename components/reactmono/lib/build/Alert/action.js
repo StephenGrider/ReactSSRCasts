@@ -31,6 +31,8 @@ var setAlert = function setAlert(msg, type) {
         position: initialPosition
       }
     });
+    /** Working with position to provide slide effect */
+
     setTimeout(function () {
       return dispatch({
         type: _types.SET_ALERT_POSITION,

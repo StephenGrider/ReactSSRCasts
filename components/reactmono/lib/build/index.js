@@ -9,7 +9,15 @@ Object.defineProperty(exports, "alert", {
     return _Alert["default"];
   }
 });
+Object.defineProperty(exports, "requireAuthHoc", {
+  enumerable: true,
+  get: function get() {
+    return _requireAuth["default"];
+  }
+});
 
 var _Alert = _interopRequireDefault(require("./Alert"));
+
+var _requireAuth = _interopRequireDefault(require("./hoc/requireAuth"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
