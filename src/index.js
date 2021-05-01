@@ -13,6 +13,7 @@ dbConnector();
 /** Create application */
 const app = express();
 app.use(express.static('public'));
+app.use(express.static('pub'));
 app.use('/styles', express.static('public'));
 app.use(cookieParser());
 
