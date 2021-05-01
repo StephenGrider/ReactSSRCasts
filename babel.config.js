@@ -5,6 +5,7 @@ const presets = [
 const plugins = [
     "@babel/plugin-proposal-class-properties",
     "@babel/plugin-proposal-object-rest-spread",
+    "@loadable/babel-plugin",
     ["inline-json-import", {}],
     [
         "babel-plugin-root-import",

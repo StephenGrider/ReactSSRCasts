@@ -1,42 +1,37 @@
 import React from 'react';
-import App from './App';
-import HomePage from './pages/HomePage';
-import UsersListPage from './pages/UsersListPage';
-import UserPage from './pages/UserPage';
-import AdminsListPage from './pages/AdminsListPage';
-import NotFoundPage from './pages/NotFoundPage';
 import adminsListPageLoader from './loaders/adminsListPage';
 import usersListPageLoader from './loaders/usersListPage';
 import usersPageLoader from './loaders/userPage';
 import defaultLoader from './loaders/defaultLoader';
+import loadable from '@loadable/component';
 
 export default () => ([
     {
-        component: App,
+        component: loadable(() => import(`./App`)),
         loadData: defaultLoader,
         routes: [
             {
-                component: HomePage,
+                component: loadable(() => import(`./pages/HomePage`)),
                 path: '/',
                 exact: true
             },
             {
-                component: AdminsListPage,
+                component: loadable(() => import(`./pages/AdminsListPage`)),
                 loadData: adminsListPageLoader,
                 path: '/admins'
             },
             {
-                component: UsersListPage,
+                component: loadable(() => import(`./pages/UsersListPage`)),
                 loadData: usersListPageLoader,
                 path: '/users'
             },
             {
-                component: UserPage,
+                component: loadable(() => import(`./pages/UserPage`)),
                 loadData: usersPageLoader,
                 path: '/user/:id'
             },
             {
-                component: NotFoundPage
+                component: loadable(() => import(`./pages/NotFoundPage`))
             }
         ]
     }

@@ -1,4 +1,6 @@
 const path = require('path');
+const LoadablePlugin = require('@loadable/webpack-plugin');
+
 module.exports = {
     mode: process.env.NODE_ENV,
     // Tell webpack to run babel on every file it runs through
@@ -22,5 +24,6 @@ module.exports = {
     },
     resolve: {
         extensions: ['.js', '.jsx']
-    }
+    },
+    plugins: [new LoadablePlugin()]
 };
