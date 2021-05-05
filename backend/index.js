@@ -12,9 +12,9 @@ dbConnector();
 
 /** Create application */
 const app = express();
-app.use(express.static('public'));
-app.use(express.static('pub'));
-app.use('/styles', express.static('public'));
+// app.use(express.static('public'));
+// app.use(express.static('pub'));
+// app.use('/styles', express.static('public'));
 app.use(cookieParser());
 
 /** Init body-parser middleware to parse form data */
@@ -39,24 +39,24 @@ initSession(app);
 import { routeProcessor } from '@reactmono/core';
 routeProcessor(app);
 
-/**
- * Admin Area Client routers configuration.
- * Process all other then api requests.
- * Backend frontend and browser frontend common start point.
- */
-import adminRoutes from './admin/ssr/initRoutes';
-adminRoutes(app);
+// /**
+//  * Admin Area Client routers configuration.
+//  * Process all other then api requests.
+//  * Backend frontend and browser frontend common start point.
+//  */
+// import adminRoutes from './admin/ssr/initRoutes';
+// adminRoutes(app);
 
-/**
- * Frontend/Client routers configuration.
- * Process all other then api requests.
- * Backend frontend and browser frontend common start point.
- */
-import clientRoutes from './client/ssr/initRoutes';
-clientRoutes(app);
+// /**
+//  * Frontend/Client routers configuration.
+//  * Process all other then api requests.
+//  * Backend frontend and browser frontend common start point.
+//  */
+// import clientRoutes from './client/ssr/initRoutes';
+// clientRoutes(app);
 
 /** Start application */
-const serverPort = config.get('server.port');
+const serverPort = config.get('backend.port');
 app.listen(serverPort, () => {
     console.log(`Listening on port ${serverPort}`);
 });

@@ -6,7 +6,7 @@ import {
     LOGOUT
 } from './types';
 
-const {action: {setErrorAlert}} = alert;
+const {action: {setErrorAlert, setSuccessAlert}} = alert;
 
 export const fetchCurrentAdmin = () => async (dispatch, getState, {type, resolver}) => {
     try {

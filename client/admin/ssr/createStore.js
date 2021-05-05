@@ -7,9 +7,11 @@ import { AppConfig } from '@reactmono/registry';
 
 /** Backend admin SSR Redux Store. */
 export default (req) => {
-    const serverPort = config.get('server.port');
+    const backendProtocol = config.get('backend.protocol');
+    const serverHost = config.get('backend.host');
+    const serverPort = config.get('backend.port');
     const apiPath = AppConfig.get('adminApiPath');
-    let baseUrl = `http://localhost:${serverPort}${apiPath}/`;
+    let baseUrl = `${backendProtocol}://${serverHost}:${serverPort}${apiPath}/`;
 
     /** Pass headers to request to preserve request cookies */
     const axiosInstance = axios.create({

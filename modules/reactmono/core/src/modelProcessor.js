@@ -1,7 +1,7 @@
 import { AppConfig, Model } from '@reactmono/registry';
 
 /** Process Models */
-export default (app) => {
+export default () => {
     let modules = AppConfig.get('modules');
 
     modules.map(moduleName => {

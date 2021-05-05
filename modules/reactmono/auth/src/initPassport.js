@@ -1,9 +1,14 @@
 import passport from 'passport';
+import config from 'config';
 import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
 import { Model } from '@reactmono/registry';
 
 export default () => {
     const User = Model.get('users');
+
+    let clientProtocol = config.get('client.protocol');
+    let clientHost = config.get('client.host');
+    let clientPort = config.get('client.port')
 
     passport.serializeUser((user, done) => {
         done(null, user.id);
@@ -21,7 +26,7 @@ export default () => {
             {
                 clientID: process.env.GOOGLE_CLIENT_ID,
                 clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-                callbackURL: '/api/auth/google/callback'
+                callbackURL: `${clientProtocol}://${clientHost}:${clientPort}/api/auth/google/callback`
             },
             async (accessToken, refreshToken, profile, done) => {
                 const existingUser = await User.findOne({ googleId: profile.id });
