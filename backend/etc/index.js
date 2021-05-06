@@ -1,5 +1,5 @@
-import adminConfig from '../../client/admin/etc/config.json';
-import clientConfig from '../../client/client/etc/config.json';
+import adminConfig from '../../app/admin/etc/config.json';
+import clientConfig from '../../app/client/etc/config.json';
 import modules from './modules.json';
 
 /** Process modules list */
