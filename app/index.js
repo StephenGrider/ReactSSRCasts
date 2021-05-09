@@ -8,7 +8,7 @@ import config from 'config';
 /** Create application */
 const app = express();
 app.use(express.static('public'));
-app.use(express.static('pub'));
+app.use(express.static('static'));
 app.use('/styles', express.static('public'));
 
 /** Prepare global configurations */
@@ -66,7 +66,6 @@ adminRoutes(app);
  * Backend frontend and browser frontend common start point.
  */
 import clientRoutes from './client/ssr/initRoutes';
-import {AppConfig} from '@reactmono/registry';
 clientRoutes(app);
 
 /** Start application */
