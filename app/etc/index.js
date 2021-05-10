@@ -1,5 +1,5 @@
-import adminConfig from '../admin/etc/config.json';
-import clientConfig from '../client/etc/config.json';
+import adminConfig from './admin-config.json';
+import clientConfig from './client-config.json';
 
 export default {
     adminConfig,

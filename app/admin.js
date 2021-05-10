@@ -8,13 +8,13 @@ import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import { renderRoutes } from 'react-router-config';
 import axios from 'axios';
-import getRoutes from './routes';
-import reducers from './reducers';
-import config from './etc/config.json';
+import getRoutes from './admin/routes';
+import reducers from './admin/reducers';
+import { getApiRoute, getAdminPath } from './utils/admin-config';
 import { loadableReady } from '@loadable/component';
 
 const axiosInstance = axios.create({
-    baseURL: `/${config.apiRoute}`
+    baseURL: `/${getAdminPath()}/${getApiRoute()}`
 });
 
 const storeParams = {
@@ -31,7 +31,7 @@ const store = createStore(
 loadableReady(() => {
     hydrate(
         <Provider store={store}>
-            <BrowserRouter>
+            <BrowserRouter basename={getAdminPath()}>
                 <div>{renderRoutes(getRoutes())}</div>
             </BrowserRouter>
         </Provider>,

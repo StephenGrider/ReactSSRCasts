@@ -1,4 +1,4 @@
-import config from '../etc/config.json';
+import config from '../etc/admin-config.json';
 
 export const getAdminPath = () => {
     return config.adminPath || 'backend';

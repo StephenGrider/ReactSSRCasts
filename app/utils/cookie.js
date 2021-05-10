@@ -2,7 +2,7 @@ import {
     getAdminPath,
     getTokenCookieName,
     getAdminSessionExpireTime
-} from './config';
+} from './admin-config';
 
 export const deleteAdminTokenCookies = () => {
     document.cookie = `${getTokenCookieName()}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
