@@ -10,8 +10,8 @@
         "dev:backend-node": "NODE_ENV=development nodemon --inspect ./generated/backend/index.js",
         "dev:client-babel": "npx babel --watch ./app --out-dir ./generated/app --source-maps",
         "dev:client-sass": "npx sass --watch app/design:public/styles",
-        "dev:client-webpack": "npx webpack --config webpack.dev-client.js --watch",
-        "dev:admin-webpack": "npx webpack --config webpack.dev-admin.js --watch",
+        "dev:client-webpack": "npx webpack --config ./webpack/webpack.dev-client.js --watch",
+        "dev:admin-webpack": "npx webpack --config ./webpack/webpack.dev-admin.js --watch",
         "dev:client-node": "NODE_ENV=development nodemon --inspect ./generated/app/index.js",
         "prod": "npm run prod-client-babel; npm run prod-backend-babel; npm-run-all --print-label --parallel prod:*",
         "prod-client-babel": "npx babel ./app --out-dir ./generated/app",
@@ -19,8 +19,8 @@
         "prod:client-node": "NODE_ENV=production node ./generated/app/index.js",
         "prod:backend-node": "NODE_ENV=production node ./generated/backend/index.js",
         "prod:client-sass": "npx sass app/design:public/styles",
-        "prod:client-webpack": "npx webpack --config webpack.client.js",
-        "prod:admin-webpack": "npx webpack --config webpack.admin.js"
+        "prod:client-webpack": "npx webpack --config ./webpack/webpack.client.js",
+        "prod:admin-webpack": "npx webpack --config ./webpack/webpack.admin.js"
     },
     "author": "",
     "license": "ISC",
