@@ -7,14 +7,14 @@ const config = {
     entry: './app/admin.js',
     output: {
         filename: 'admin-bundle.js',
-        path: path.resolve(__dirname, '../public')
+        path: path.resolve(__dirname, '../public/admin')
     },
     module: {
         rules: [
             {
                 test: /\.js$/,
-                enforce: "pre",
-                use: ["source-map-loader"],
+                enforce: 'pre',
+                use: ['source-map-loader'],
             },
         ],
     },

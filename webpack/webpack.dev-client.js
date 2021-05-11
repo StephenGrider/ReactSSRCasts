@@ -7,14 +7,14 @@ const config = {
     entry: './app/client.js',
     output: {
         filename: 'bundle.js',
-        path: path.resolve(__dirname, '../public')
+        path: path.resolve(__dirname, '../public/client')
     },
     module: {
         rules: [
             {
                 test: /\.js$/,
-                enforce: "pre",
-                use: ["source-map-loader"],
+                enforce: 'pre',
+                use: ['source-map-loader'],
             },
         ],
     },
