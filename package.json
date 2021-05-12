@@ -4,6 +4,7 @@
     "description": "React SSR, Server side rendering React Redux framework",
     "main": "index.js",
     "scripts": {
+        "start": "npm run dev",
         "dev": "npm run dev-client-babel; npm run dev-backend-babel; npm-run-all --print-label --parallel dev:*",
         "dev-client-babel": "npx babel ./app --out-dir ./generated/app --source-maps",
         "dev-backend-babel": "npx babel ./backend --out-dir ./generated/backend --source-maps",
