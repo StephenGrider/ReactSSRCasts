@@ -1,0 +1,1 @@
+export requireAuth from './requireAuth';

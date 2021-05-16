@@ -11,9 +11,11 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _reactRedux = require("react-redux");
 
-var _action = require("./action");
+var _ducks = _interopRequireDefault(require("./ducks"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+var removeAlert = _ducks["default"].action.removeAlert;
 
 var Alert = function Alert(_ref) {
   var alerts = _ref.alerts,
@@ -75,7 +77,7 @@ var mapStateToProps = function mapStateToProps(state) {
 };
 
 var _default = (0, _reactRedux.connect)(mapStateToProps, {
-  removeAlert: _action.removeAlert
+  removeAlert: removeAlert
 })(Alert);
 
 exports["default"] = _default;

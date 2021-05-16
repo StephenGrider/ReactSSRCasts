@@ -1,4 +1,4 @@
-import { alert } from '@reactmono/components';
+import alert from '@reactmono/app-base-alert';
 import {
     FETCH_CURRENT_ADMIN,
     LOGIN_SUCCESS,
@@ -6,7 +6,7 @@ import {
     LOGOUT
 } from './types';
 
-const {action: {setErrorAlert, setSuccessAlert}} = alert;
+const {action: {setErrorAlert, setSuccessAlert}} = alert.ducks;
 
 export const fetchCurrentAdmin = () => async (dispatch, getState, {type, resolver}) => {
     try {

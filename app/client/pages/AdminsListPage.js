@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { fetchAdmins } from '../actions/fetchAdmins';
-import { requireAuthHoc } from '@reactmono/components';
+import { requireAuth } from '@reactmono/app-base-hoc';
 
 const AdminsListPage = ({ admins, fetchAdmins}) => {
     const renderAdmins = () => admins.map(admin => {
@@ -29,4 +29,4 @@ function mapStateToProps({ admins }) {
 export default connect(
     mapStateToProps,
     { fetchAdmins }
-)(requireAuthHoc(AdminsListPage));
+)(requireAuth(AdminsListPage));

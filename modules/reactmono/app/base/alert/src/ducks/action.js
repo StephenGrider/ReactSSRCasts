@@ -1,5 +1,9 @@
 import * as uuid from 'uuid';
-import { SET_ALERT, REMOVE_ALERT, SET_ALERT_POSITION } from './types';
+import {
+    SET_ALERT,
+    REMOVE_ALERT,
+    SET_ALERT_POSITION
+} from './types';
 
 const initialPosition = '110%';
 const slideTimeout = 100;

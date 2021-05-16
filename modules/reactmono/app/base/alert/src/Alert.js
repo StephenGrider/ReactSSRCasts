@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { removeAlert } from './action';
+import ducks from './ducks';
+
+const { action: { removeAlert } } = ducks;
 
 const Alert = ({ alerts, removeAlert }) => {
     const getIconType = (type) => {

@@ -1,13 +1,12 @@
 {
-  "name": "@reactmono/components-lib",
+  "name": "@reactmono/app-base-alert",
   "version": "0.0.1",
-  "description": "Common components for ReactMono Framework",
+  "description": "Alert messages component",
   "main": "build/index.js",
   "scripts": {
     "build": "npx babel src --out-dir build"
   },
-  "keywords": [],
-  "author": "",
+  "author": "ReactMono",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.12.17",
