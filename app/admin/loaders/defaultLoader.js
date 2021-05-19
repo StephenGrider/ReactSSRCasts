@@ -1,4 +1,5 @@
-import { fetchCurrentAdmin } from '../actions/auth';
+import { action as authAction } from '../store/auth';
+const { fetchCurrentAdmin } = authAction;
 
 /**
  * All pages SSR data loaders.

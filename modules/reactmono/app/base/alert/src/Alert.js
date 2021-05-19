@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import ducks from './ducks';
+import { action } from '@reactmono/store-base-alert';
 
-const { action: { removeAlert } } = ducks;
+const { removeAlert } = action;
 
 const Alert = ({ alerts, removeAlert }) => {
     const getIconType = (type) => {

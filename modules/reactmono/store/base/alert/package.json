@@ -1,7 +1,7 @@
 {
-  "name": "@reactmono/app-base-alert",
+  "name": "@reactmono/store-base-alert",
   "version": "0.0.1",
-  "description": "Alert messages component",
+  "description": "Store module for alerts",
   "main": "build/index.js",
   "scripts": {
     "build": "npx babel src --out-dir build"
@@ -14,13 +14,8 @@
     "@babel/plugin-proposal-class-properties": "^7.12.13",
     "@babel/plugin-proposal-export-default-from": "^7.12.13",
     "@babel/plugin-proposal-object-rest-spread": "^7.12.13",
-    "@babel/plugin-transform-react-jsx": "^7.12.12",
     "@babel/plugin-transform-runtime": "^7.12.17",
     "@babel/preset-env": "^7.12.17",
-    "@babel/preset-react": "^7.12.13",
     "babel-loader": "^8.2.2"
-  },
-  "dependencies": {
-    "@reactmono/store-base-alert": "file:../../../store/base/alert"
   }
 }

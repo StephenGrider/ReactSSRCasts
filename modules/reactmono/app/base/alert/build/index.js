@@ -3,16 +3,13 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+Object.defineProperty(exports, "Alert", {
+  enumerable: true,
+  get: function get() {
+    return _Alert2["default"];
+  }
+});
 
-var _Alert = _interopRequireDefault(require("./Alert"));
-
-var _ducks = _interopRequireDefault(require("./ducks"));
+var _Alert2 = _interopRequireDefault(require("./Alert"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-var _default = {
-  component: _Alert["default"],
-  ducks: _ducks["default"]
-};
-exports["default"] = _default;

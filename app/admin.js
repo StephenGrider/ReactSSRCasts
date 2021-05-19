@@ -9,7 +9,7 @@ import { Provider } from 'react-redux';
 import { renderRoutes } from 'react-router-config';
 import axios from 'axios';
 import getRoutes from './admin/routes';
-import reducers from './admin/reducers';
+import reducer from './admin/store/reducer';
 import { getApiRoute, getAdminPath } from './utils/admin-config';
 import { loadableReady } from '@loadable/component';
 
@@ -23,7 +23,7 @@ const storeParams = {
 }
 
 const store = createStore(
-    reducers,
+    reducer,
     window.INITIAL_STATE,
     applyMiddleware(thunk.withExtraArgument(storeParams))
 );

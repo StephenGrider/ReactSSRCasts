@@ -2,7 +2,7 @@ import {
     SET_ALERT,
     REMOVE_ALERT,
     SET_ALERT_POSITION
-} from './types';
+} from './type';
 
 const initialState = [];
 

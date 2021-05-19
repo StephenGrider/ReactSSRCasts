@@ -6,21 +6,22 @@ const plugins = [
     "@babel/plugin-proposal-class-properties",
     "@babel/plugin-proposal-object-rest-spread",
     "@loadable/babel-plugin",
+    "@babel/plugin-proposal-export-default-from",
     ["inline-json-import", {}],
     [
         "babel-plugin-root-import",
         {
             "paths": [
                 {
-                    "rootPathSuffix": "./src",
+                    "rootPathSuffix": "./app",
                     "rootPathPrefix": "~/"
                 },
                 {
-                    "rootPathSuffix": "./src/client",
+                    "rootPathSuffix": "./app/client",
                     "rootPathPrefix": "~client/"
                 },
                 {
-                    "rootPathSuffix": "./src/admin",
+                    "rootPathSuffix": "./app/admin",
                     "rootPathPrefix": "~admin/"
                 }
             ]

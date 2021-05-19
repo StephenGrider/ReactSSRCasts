@@ -9,7 +9,7 @@ exports.setWarningAlert = exports.setSuccessAlert = exports.setInfoAlert = expor
 
 var uuid = _interopRequireWildcard(require("uuid"));
 
-var _types = require("./types");
+var _type = require("./type");
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
@@ -23,7 +23,7 @@ var setAlert = function setAlert(msg, type) {
   return function (dispatch) {
     var id = uuid.v4();
     dispatch({
-      type: _types.SET_ALERT,
+      type: _type.SET_ALERT,
       payload: {
         msg: msg,
         type: type,
@@ -35,7 +35,7 @@ var setAlert = function setAlert(msg, type) {
 
     setTimeout(function () {
       return dispatch({
-        type: _types.SET_ALERT_POSITION,
+        type: _type.SET_ALERT_POSITION,
         payload: {
           id: id,
           position: 0
@@ -44,7 +44,7 @@ var setAlert = function setAlert(msg, type) {
     }, slideTimeout);
     setTimeout(function () {
       return dispatch({
-        type: _types.SET_ALERT_POSITION,
+        type: _type.SET_ALERT_POSITION,
         payload: {
           id: id,
           position: initialPosition
@@ -54,7 +54,7 @@ var setAlert = function setAlert(msg, type) {
     );
     setTimeout(function () {
       return dispatch({
-        type: _types.REMOVE_ALERT,
+        type: _type.REMOVE_ALERT,
         payload: {
           msg: msg,
           type: type,
@@ -70,7 +70,7 @@ exports.setAlert = setAlert;
 var removeAlert = function removeAlert(id) {
   return function (dispatch) {
     dispatch({
-      type: _types.SET_ALERT_POSITION,
+      type: _type.SET_ALERT_POSITION,
       payload: {
         id: id,
         position: initialPosition
@@ -78,7 +78,7 @@ var removeAlert = function removeAlert(id) {
     });
     setTimeout(function () {
       return dispatch({
-        type: _types.REMOVE_ALERT,
+        type: _type.REMOVE_ALERT,
         payload: {
           id: id
         }

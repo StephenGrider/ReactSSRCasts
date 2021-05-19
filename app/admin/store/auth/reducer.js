@@ -3,8 +3,8 @@ import {
     LOGIN_SUCCESS,
     AUTH_ERROR,
     LOGOUT
-} from '../actions/types';
-import { deleteAdminTokenCookies, setAdminTokenCookie } from '../../utils/cookie';
+} from './type';
+import { deleteAdminTokenCookies, setAdminTokenCookie } from '~/utils/cookie';
 
 export default (state = {}, action) => {
     const { type, payload } = action;

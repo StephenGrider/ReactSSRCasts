@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import reducers from '../reducers';
+import reducer from '../store/reducer';
 import axios from 'axios';
 import config from 'config';
 import { AppConfig } from '@reactmono/registry';
@@ -26,7 +26,7 @@ export default (req) => {
     }
 
     return createStore(
-        reducers,
+        reducer,
         {},
         applyMiddleware(thunk.withExtraArgument(storeParams))
     );

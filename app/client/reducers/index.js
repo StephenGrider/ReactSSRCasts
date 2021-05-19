@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
-import alert from '@reactmono/app-base-alert';
+import { reducer as alertReducer } from '@reactmono/store-base-alert';
 import userReducer from './userReducer';
 import usersReducer from './usersReducer';
 import authReducer from './authReducer';
 import adminsReducer from './adminsReducer';
 
 export default combineReducers({
-    alert: alert.ducks.reducer,
+    alert: alertReducer,
     user: userReducer,
     users: usersReducer,
     auth: authReducer,

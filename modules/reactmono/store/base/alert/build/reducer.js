@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = _default;
 
-var _types = require("./types");
+var _type = require("./type");
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -34,15 +34,15 @@ function _default() {
       payload = action.payload;
 
   switch (type) {
-    case _types.SET_ALERT:
+    case _type.SET_ALERT:
       return payload && payload.msg ? [].concat(_toConsumableArray(state), [payload]) : state;
 
-    case _types.REMOVE_ALERT:
+    case _type.REMOVE_ALERT:
       return state.filter(function (alert) {
         return alert.id !== payload.id;
       });
 
-    case _types.SET_ALERT_POSITION:
+    case _type.SET_ALERT_POSITION:
       return state.map(function (alert) {
         return alert.id === payload.id ? _objectSpread(_objectSpread({}, alert), {}, {
           position: payload.position

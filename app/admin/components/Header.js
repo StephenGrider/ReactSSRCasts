@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { logout } from '../actions/auth';
+import { action as authAction } from '../store/auth';
+
+const { logout } = authAction;
 
 const Header = ({ auth, logout }) => {
     console.log('Header auth: ', auth);
