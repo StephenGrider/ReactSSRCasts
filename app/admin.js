@@ -10,7 +10,7 @@ import { renderRoutes } from 'react-router-config';
 import axios from 'axios';
 import getRoutes from './admin/routes';
 import reducer from './admin/store/reducer';
-import { getApiRoute, getAdminPath } from './utils/admin-config';
+import { getApiRoute, getAdminPath } from '~app/utils/admin-config';
 import { loadableReady } from '@loadable/component';
 
 const axiosInstance = axios.create({

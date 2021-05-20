@@ -10,7 +10,7 @@ import { renderRoutes } from 'react-router-config';
 import axios from 'axios';
 import getRoutes from './client/routes';
 import reducers from './client/reducers';
-import config from './etc/client-config.json';
+import config from './etc/client/config.json';
 import { loadableReady } from '@loadable/component';
 
 const axiosInstance = axios.create({
