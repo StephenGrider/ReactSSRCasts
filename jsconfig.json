@@ -2,5 +2,10 @@
     "compilerOptions": {
         "baseUrl": "."
     },
-    "exclude": ["node_modules"]
+    "exclude": ["node_modules"],
+    "paths": {
+        "~app/*": ["app/*"],
+        "~client/*": ["app/client/*"],
+        "~admin/*": ["app/admin/*"]
+    }
 }

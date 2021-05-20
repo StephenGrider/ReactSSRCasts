@@ -2,7 +2,9 @@ import React from 'react';
 import defaultLoader from './loaders/defaultLoader';
 import loadable from '@loadable/component';
 
-import { route as homepage } from './module/home-page';
+import { route as homepage } from './module/page-home';
+import { route as notFoundPage } from './module/page-not-found';
+import { route as signUpPage } from './module/page-sign-up';
 
 export default () => ([
     {
@@ -10,13 +12,8 @@ export default () => ([
         loadData: defaultLoader,
         routes: [
             ...homepage,
-            {
-                component: loadable(() => import(`./pages/SignUpPage`)),
-                path: `/signup`,
-            },
-            {
-                component: loadable(() => import(`./pages/NotFoundPage`))
-            }
+            ...signUpPage,
+            ...notFoundPage
         ]
     }
 ]);

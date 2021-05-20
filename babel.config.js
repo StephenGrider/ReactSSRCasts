@@ -14,7 +14,7 @@ const plugins = [
             "paths": [
                 {
                     "rootPathSuffix": "./app",
-                    "rootPathPrefix": "~/"
+                    "rootPathPrefix": "~app/"
                 },
                 {
                     "rootPathSuffix": "./app/client",

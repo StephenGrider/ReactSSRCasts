@@ -1,13 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { action as authAction } from '../store/auth';
+import { action as authAction } from '~admin/store/auth';
 
 const { logout } = authAction;
 
 const Header = ({ auth, logout }) => {
-    console.log('Header auth: ', auth);
-
     const handleLogout = (e) => {
         e.preventDefault();
         logout();
