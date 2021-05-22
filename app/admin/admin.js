@@ -8,9 +8,9 @@ import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import { renderRoutes } from 'react-router-config';
 import axios from 'axios';
-import getRoutes from './admin/routes';
-import reducer from './admin/store/reducer';
-import { getApiRoute, getAdminPath } from '~app/utils/admin-config';
+import getRoutes from '~admin/routeProcessor';
+import reducer from '~admin/store/reducer';
+import { getApiRoute, getAdminPath } from '~app/util/admin/config';
 import { loadableReady } from '@loadable/component';
 
 const axiosInstance = axios.create({

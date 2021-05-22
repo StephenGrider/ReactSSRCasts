@@ -2,7 +2,7 @@ import config from 'config';
 import { matchRoutes } from 'react-router-config';
 import createStore from './createStore';
 import renderer from './renderer';
-import getRoutes from '../routes';
+import getRoutes from '~admin/routeProcessor';
 import { AppConfig } from '@reactmono/registry';
 
 /**

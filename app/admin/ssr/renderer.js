@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { renderRoutes } from 'react-router-config';
 import serialize from 'serialize-javascript';
 import { Helmet } from 'react-helmet';
-import getRoutes from '../routes';
+import getRoutes from '../routeProcessor';
 import config from 'config';
 import { ChunkExtractor } from '@loadable/server';
 import { AppConfig } from '@reactmono/registry';

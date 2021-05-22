@@ -4,7 +4,7 @@ import {
     AUTH_ERROR,
     LOGOUT
 } from './type';
-import { deleteAdminTokenCookies, setAdminTokenCookie } from '~app/utils/cookie';
+import { deleteAdminTokenCookies, setAdminTokenCookie } from '~app/util/admin/cookie';
 
 export default (state = {}, action) => {
     const { type, payload } = action;

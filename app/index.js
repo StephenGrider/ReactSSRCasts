@@ -12,7 +12,12 @@ app.use(express.static('static'));
 app.use('/styles', express.static('public'));
 
 /** Prepare global configurations */
-import appConfigs from './etc';
+import { adminConfig } from '~app/etc/admin';
+import { clientConfig } from '~app/etc/client';
+let appConfigs = {
+    adminConfig,
+    clientConfig
+};
 import { initAppConfigs } from '@reactmono/core';
 initAppConfigs(appConfigs);
 
@@ -21,9 +26,9 @@ import proxy from 'express-http-proxy';
 const backendHost = config.get('backend.host');
 const backendPort = config.get('backend.port');
 const clientPort = config.get('client.port');
-const clientApiPath = appConfigs.clientConfig.apiRoute;
-const adminApiPath = appConfigs.adminConfig.apiRoute;
-const adminPath = appConfigs.adminConfig.adminPath;
+const clientApiPath = clientConfig.apiRoute;
+const adminApiPath = adminConfig.apiRoute;
+const adminPath = adminConfig.adminPath;
 
 app.use(
     `/${adminPath}/${adminApiPath}`,
