@@ -10,7 +10,7 @@ let routes = Object.keys(modules).reduce((accumulatedConfigs, module) => {
 
 export default () => ([
     {
-        component: loadable(() => import(`./App`)),
+        component: loadable(() => import(`../App`)),
         loadData: defaultLoader,
         routes
     }

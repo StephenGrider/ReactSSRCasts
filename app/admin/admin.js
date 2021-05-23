@@ -8,7 +8,7 @@ import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import { renderRoutes } from 'react-router-config';
 import axios from 'axios';
-import getRoutes from '~admin/routeProcessor';
+import getRoutes from '~admin/bootstrap/routeProcessor';
 import reducer from '~admin/store/reducer';
 import { getApiRoute, getAdminPath } from '~app/util/admin/config';
 import { loadableReady } from '@loadable/component';
