@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import reducer from '../store/reducer';
+import reducer from '~admin/bootstrap/reducerProcessor';
 import axios from 'axios';
 import config from 'config';
 import { AppConfig } from '@reactmono/registry';

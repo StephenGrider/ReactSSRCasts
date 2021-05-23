@@ -1,2 +1,6 @@
 export * as action from './action';
-export reducer from './reducer';
+
+import authReducer from './reducer';
+export const reducer = {
+    auth: authReducer
+};

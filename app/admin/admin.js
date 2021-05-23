@@ -9,7 +9,7 @@ import { Provider } from 'react-redux';
 import { renderRoutes } from 'react-router-config';
 import axios from 'axios';
 import getRoutes from '~admin/bootstrap/routeProcessor';
-import reducer from '~admin/store/reducer';
+import reducer from '~admin/bootstrap/reducerProcessor';
 import { getApiRoute, getAdminPath } from '~app/util/admin/config';
 import { loadableReady } from '@loadable/component';
 

@@ -1,4 +1,4 @@
-import { moduleList as modules } from '~app/etc/admin';
+import { storeModuleList as modules } from '~app/etc/admin';
 
 /** Process modules list */
 let activeModules = [];
