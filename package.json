@@ -35,6 +35,7 @@
         "@loadable/server": "^5.14.2",
         "@loadable/webpack-plugin": "^5.14.2",
         "@reactmono/admin-auth": "file:modules/reactmono/admin-auth",
+        "@reactmono/app-admin-page-sign-up": "file:modules/reactmono/app/admin/page-sign-up",
         "@reactmono/app-base-alert": "file:modules/reactmono/app/base/alert",
         "@reactmono/app-base-hoc": "file:modules/reactmono/app/base/hoc",
         "@reactmono/auth": "file:modules/reactmono/auth",

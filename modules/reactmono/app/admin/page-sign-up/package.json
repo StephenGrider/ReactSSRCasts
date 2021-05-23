@@ -1,0 +1,23 @@
+{
+  "name": "@reactmono/app-admin-page-sign-up",
+  "version": "0.0.1",
+  "description": "Admin Sign Up Page",
+  "main": "build/index.js",
+  "scripts": {
+    "build": "npx babel src --out-dir build"
+  },
+  "author": "ReactMono",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.12.17",
+    "@babel/node": "^7.12.10",
+    "@babel/plugin-proposal-class-properties": "^7.12.13",
+    "@babel/plugin-proposal-export-default-from": "^7.12.13",
+    "@babel/plugin-proposal-object-rest-spread": "^7.12.13",
+    "@babel/plugin-transform-react-jsx": "^7.12.12",
+    "@babel/plugin-transform-runtime": "^7.12.17",
+    "@babel/preset-env": "^7.12.17",
+    "@babel/preset-react": "^7.12.13",
+    "babel-loader": "^8.2.2"
+  }
+}
