@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux';
+import storeModules from '~app/util/admin/getStoreModules';
 
-import { reducer as auth } from '~admin/store/auth';
-import { reducer as alert } from '@reactmono/store-base-alert';
+let reducers = Object.keys(storeModules).reduce((result, moduleAlias) => {
+    let module = storeModules[moduleAlias];
+    let { reducer } = module;
 
-export default combineReducers({
-    ...auth,
-    ...alert
-});
+    return {...result, ...reducer};
+}, {});
+
+export default combineReducers(reducers);

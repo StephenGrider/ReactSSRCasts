@@ -1,4 +1,5 @@
 export * as modules from './modules.js';
+export * as storeModules from './store-modules.js';
 export moduleList from './module-list.json';
 export storeModuleList from './store-module-list.json';
 export adminConfig from './config.json';
