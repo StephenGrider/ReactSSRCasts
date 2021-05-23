@@ -21,7 +21,7 @@ export default (app) => {
         const store = createStore(req);
 
         const promises = matchRoutesList.map(({route, match}) => {
-            return route.loadData && useSSR ? route.loadData(store, match) : null;
+            return route.loadData && useSSR ? route.loadData(store, match.params) : null;
         }).map(promise => {
             if (promise) {
                 return new Promise((resolve, reject) => {
