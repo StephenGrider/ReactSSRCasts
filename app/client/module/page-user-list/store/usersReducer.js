@@ -1,4 +1,4 @@
-import { FETCH_USERS, FETCH_INNER_USERS } from '../actions/fetchUsers';
+import { FETCH_USERS, FETCH_INNER_USERS } from './fetchUsers';
 
 export default (state = [], action) => {
     switch (action.type) {

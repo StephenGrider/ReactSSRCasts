@@ -1,6 +1,6 @@
 import React from 'react';
 import loadable from '@loadable/component';
-import modules from '~app/util/admin/getModules';
+import modules from '~app/util/client/getModules';
 import loaderGenerator from '~app/util/base/loaderGenerator';
 
 /** Collect loaders for routes from modules */

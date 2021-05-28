@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { fetchInnerUsers } from '../actions/fetchUsers';
+import { action } from '~client/module/page-user-list';
+
+const { fetchInnerUsers } = action;
 
 const InnerUsersList = ({ innerUsers, fetchInnerUsers }) => {
     const renderUsers = () => {

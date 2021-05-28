@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { fetchUsers } from '../actions/fetchUsers';
+import { action as usersAction } from './store';
 import { Helmet } from 'react-helmet';
-import InnerUsersList from '../components/InnerUsersList';
+import { InnerUsersList } from '~client/module/inner-user-list';
+
+const { fetchUsers } = usersAction;
 
 const UsersList = ({ users, fetchUsers }) => {
     const head = () => (

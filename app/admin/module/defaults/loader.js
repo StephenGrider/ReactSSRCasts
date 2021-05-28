@@ -3,6 +3,6 @@ const { fetchCurrentAdmin } = authAction;
 
 export default {
     'default': [
-        (param) => fetchCurrentAdmin()
+        (params) => fetchCurrentAdmin()
     ]
 };

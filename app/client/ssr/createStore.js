@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import reducers from '../reducers';
+import reducers from '~client/bootstrap/reducerProcessor';
 import axios from 'axios';
 import config from 'config';
 import { AppConfig } from '@reactmono/registry';
@@ -21,7 +21,7 @@ export default (req) => {
     const storeParams = {
         type: 'backend',
         resolver: axiosInstance
-    }
+    };
 
     return createStore(
         reducers,

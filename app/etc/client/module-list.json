@@ -1,0 +1,9 @@
+{
+  "~client/module/auth": 1,
+  "~client/module/header": 1,
+  "~client/module/inner-user-list": 1,
+  "~client/module/page-home": 1,
+  "~client/module/page-user-list": 1,
+  "~client/module/page-not-found": 1,
+  "@reactmono/store-base-alert": 1
+}

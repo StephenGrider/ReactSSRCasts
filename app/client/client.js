@@ -8,8 +8,8 @@ import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import { renderRoutes } from 'react-router-config';
 import axios from 'axios';
-import getRoutes from './routes';
-import reducers from './reducers';
+import getRoutes from '~client/bootstrap/routeProcessor';
+import reducers from '~client/bootstrap/reducerProcessor';
 import config from '~app/etc/client/config.json';
 import { loadableReady } from '@loadable/component';
 

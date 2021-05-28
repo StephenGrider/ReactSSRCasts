@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { fetchUser, fetchNextUser } from '../actions/fetchUser';
+import { action as userAction } from './store';
 import { Helmet } from 'react-helmet';
 import { useParams } from 'react-router-dom';
+
+const { fetchUser, fetchNextUser } = userAction;
 
 const User = ({user, nextUser, fetchUser, fetchNextUser}) => {
     let {id} = useParams();

@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { fetchAdmins } from '../actions/fetchAdmins';
+import { action as actionAdmins } from './store';
 import { requireAuth } from '@reactmono/app-base-hoc';
+
+const { fetchAdmins } = actionAdmins;
 
 const AdminsListPage = ({ admins, fetchAdmins}) => {
     const renderAdmins = () => admins.map(admin => {
