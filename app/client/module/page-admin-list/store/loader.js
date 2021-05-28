@@ -1,6 +1,4 @@
-import { action } from './store';
-
-const { fetchAdmins } = action;
+import { fetchAdmins } from './fetchAdmins';
 
 export default {
     '/admins': [

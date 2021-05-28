@@ -4,7 +4,7 @@ export const action = {
     ...userAction,
     ...usersAction
 };
-
+export loader from './loader';
 import userReducer from './userReducer';
 import usersReducer from './usersReducer';
 export const reducer = {

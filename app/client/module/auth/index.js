@@ -1,2 +1,1 @@
-export loader from './loader';
-export { action, reducer } from './store';
+export { action, reducer, loader } from './store';

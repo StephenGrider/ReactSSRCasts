@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { action } from '~client/module/page-user-list';
+import { action } from './store';
 
 const { fetchInnerUsers } = action;
 
@@ -26,7 +26,7 @@ const InnerUsersList = ({ innerUsers, fetchInnerUsers }) => {
 };
 
 const mapStateToProps = (state) => {
-    return { innerUsers: state.users.innerUsers };
+    return { innerUsers: state.innerUsers.users };
 }
 
 export default connect(mapStateToProps, { fetchInnerUsers })(InnerUsersList);
