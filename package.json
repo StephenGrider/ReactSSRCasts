@@ -41,7 +41,6 @@
         "@reactmono/auth": "file:modules/reactmono/auth",
         "@reactmono/core": "file:modules/reactmono/core",
         "@reactmono/registry": "file:modules/reactmono/registry",
-        "@reactmono/store-base-alert": "file:modules/reactmono/store/base/alert",
         "@reactmono/test-user": "file:modules/reactmono/test-user",
         "axios": "^0.21.1",
         "babel-register": "^6.26.0",

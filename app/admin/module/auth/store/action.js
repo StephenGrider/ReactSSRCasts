@@ -1,4 +1,4 @@
-import { action } from '@reactmono/store-base-alert';
+import { action } from '@reactmono/app-base-alert';
 
 import {
     FETCH_CURRENT_ADMIN,

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { action } from '@reactmono/store-base-alert';
+import { action } from './store';
 
 const { removeAlert } = action;
 

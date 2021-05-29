@@ -19,8 +19,5 @@
     "@babel/preset-env": "^7.12.17",
     "@babel/preset-react": "^7.12.13",
     "babel-loader": "^8.2.2"
-  },
-  "dependencies": {
-    "@reactmono/store-base-alert": "file:../../../store/base/alert"
   }
 }

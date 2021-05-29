@@ -6,4 +6,4 @@ export * as pageAdminList from '~client/module/mock-page-admin-list';
 export * as pageHome from '~client/module/page-home';
 export * as pageUserList from '~client/module/mock-page-user-list';
 export * as pageNotFound from '~client/module/page-not-found';
-export * as storeBaseAlert from '@reactmono/store-base-alert';
+export * as storeBaseAlert from '@reactmono/app-base-alert';

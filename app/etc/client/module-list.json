@@ -5,5 +5,5 @@
   "~client/module/page-home": 1,
   "~client/module/mock-page-user-list": 1,
   "~client/module/page-not-found": 1,
-  "@reactmono/store-base-alert": 1
+  "@reactmono/app-base-alert": 1
 }

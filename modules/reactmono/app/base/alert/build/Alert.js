@@ -11,13 +11,11 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _reactRedux = require("react-redux");
 
-var _storeBaseAlert = require("@reactmono/store-base-alert");
+var _store = require("./store");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-// import ducks from './ducks';
-// const { action: { removeAlert } } = ducks;
-var removeAlert = _storeBaseAlert.action.removeAlert;
+var removeAlert = _store.action.removeAlert;
 
 var Alert = function Alert(_ref) {
   var alerts = _ref.alerts,
