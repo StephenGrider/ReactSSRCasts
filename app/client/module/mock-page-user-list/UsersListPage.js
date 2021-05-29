@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { action as usersAction } from './store';
 import { Helmet } from 'react-helmet';
-import { InnerUsersList } from '~client/module/inner-user-list';
+import { InnerUsersList } from '~client/module/mock-inner-user-list';
 
 const { fetchUsers } = usersAction;
 
