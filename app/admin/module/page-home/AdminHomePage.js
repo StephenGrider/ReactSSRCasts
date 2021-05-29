@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { action as authAction } from '~admin/store/auth';
+import { action as authAction } from '~admin/module/auth';
 import PropTypes from 'prop-types';
 import { useForm } from 'react-hook-form';
 

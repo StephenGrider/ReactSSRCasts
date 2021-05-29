@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { action as authAction } from '~admin/store/auth';
+import { action as authAction } from '~admin/module/auth';
 
 const { logout } = authAction;
 

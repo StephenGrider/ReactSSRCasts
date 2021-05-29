@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import storeModules from '~app/util/admin/getStoreModules';
+import modules from '~app/util/admin/getModules';
 
-let reducers = Object.keys(storeModules).reduce((result, moduleAlias) => {
-    let module = storeModules[moduleAlias];
+let reducers = Object.keys(modules).reduce((result, moduleAlias) => {
+    let module = modules[moduleAlias];
     let { reducer } = module;
 
     return {...result, ...reducer};
