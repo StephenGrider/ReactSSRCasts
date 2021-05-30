@@ -1,4 +1,4 @@
-import { AppConfig } from '@reactmono/registry';
+import { AppConfig } from '@reactmono/framework-registry';
 
 /** Process Api Route Configurations */
 export default (app) => {

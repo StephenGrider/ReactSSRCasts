@@ -1,7 +1,6 @@
-import { requireLogin } from '@reactmono/auth';
+import { requireLogin, getAdmins } from '@reactmono/backend-client-auth';
 import getTestUsers from '../service/testUsers';
 import getTestInnerUsers from '../service/testInnerUsers';
-import { getAdmins } from '@reactmono/auth';
 
 export default () => ([
     {

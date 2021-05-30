@@ -1,4 +1,4 @@
-import { Model } from '@reactmono/registry';
+import { Model } from '@reactmono/framework-registry';
 import adminMiddleware from '../middleware';
 
 /**

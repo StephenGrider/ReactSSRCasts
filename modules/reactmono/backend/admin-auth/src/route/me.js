@@ -1,5 +1,5 @@
 import adminMiddleware from '../middleware';
-import { Model } from '@reactmono/registry';
+import { Model } from '@reactmono/framework-registry';
 
 /**
  * @route GET backend/api/me

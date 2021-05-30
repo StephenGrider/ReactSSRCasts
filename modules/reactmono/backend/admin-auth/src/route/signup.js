@@ -2,7 +2,7 @@ import bcrypt from 'bcryptjs';
 import config from 'config';
 import { check, validationResult } from 'express-validator';
 import jwt from 'jsonwebtoken';
-import { Model } from '@reactmono/registry';
+import { Model } from '@reactmono/framework-registry';
 
 /**
  * @route POST backend/api/signup

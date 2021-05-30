@@ -1,4 +1,4 @@
-import { AppConfig, Model } from '@reactmono/registry';
+import { AppConfig, Model } from '@reactmono/framework-registry';
 
 /** Process Models */
 export default () => {

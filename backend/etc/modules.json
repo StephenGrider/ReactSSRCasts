@@ -1,5 +1,5 @@
 {
-  "@reactmono/admin-auth": 1,
-  "@reactmono/auth": 1,
-  "@reactmono/test-user": 1
+  "@reactmono/backend-admin-auth": 1,
+  "@reactmono/backend-client-auth": 1,
+  "@reactmono/backend-test-user": 1
 }

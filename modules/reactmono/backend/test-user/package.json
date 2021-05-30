@@ -1,6 +1,6 @@
 {
-  "name": "@reactmono/auth",
-  "version": "0.0.1",
+  "name": "@reactmono/backend-test-user",
+  "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {

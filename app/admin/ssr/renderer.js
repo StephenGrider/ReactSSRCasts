@@ -8,7 +8,7 @@ import { Helmet } from 'react-helmet';
 import getRoutes from '~admin/bootstrap/routeProcessor';
 import config from 'config';
 import { ChunkExtractor } from '@loadable/server';
-import { AppConfig } from '@reactmono/registry';
+import { AppConfig } from '@reactmono/framework-registry';
 import path from 'path';
 
 /**

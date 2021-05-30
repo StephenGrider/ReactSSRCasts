@@ -1,7 +1,7 @@
 import passport from 'passport';
 import config from 'config';
 import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
-import { Model } from '@reactmono/registry';
+import { Model } from '@reactmono/framework-registry';
 
 export default () => {
     const User = Model.get('users');

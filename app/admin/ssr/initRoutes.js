@@ -3,7 +3,7 @@ import { matchRoutes } from 'react-router-config';
 import createStore from './createStore';
 import renderer from './renderer';
 import getRoutes from '~admin/bootstrap/routeProcessor';
-import { AppConfig } from '@reactmono/registry';
+import { AppConfig } from '@reactmono/framework-registry';
 
 /**
  * Frontend Admin routers configuration.

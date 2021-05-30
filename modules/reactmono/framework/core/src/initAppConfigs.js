@@ -1,5 +1,5 @@
 import path from 'path';
-import { AppConfig } from '@reactmono/registry';
+import { AppConfig } from '@reactmono/framework-registry';
 
 /** Set admin Api path configuration. */
 const setAdminApiPath = (appConfigs) => {
@@ -28,9 +28,15 @@ const setModules = (appConfigs) => {
     AppConfig.set('modules', appConfigs.modules);
 };
 
-/** Process App Configurations */
-export default (appConfigs) => {
-    setModules(appConfigs)
+/**
+ * Process App Configurations
+ * @param appConfigs: object
+ * @param applicationType: string - frontend, backend
+ */
+export default (appConfigs, applicationType) => {
+    if (applicationType === 'backend') {
+        setModules(appConfigs);
+    }
     setAdminApiPath(appConfigs);
     setClientApiPath(appConfigs);
 };

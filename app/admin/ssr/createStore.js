@@ -3,7 +3,7 @@ import thunk from 'redux-thunk';
 import reducer from '~admin/bootstrap/reducerProcessor';
 import axios from 'axios';
 import config from 'config';
-import { AppConfig } from '@reactmono/registry';
+import { AppConfig } from '@reactmono/framework-registry';
 
 /** Backend admin SSR Redux Store. */
 export default (req) => {

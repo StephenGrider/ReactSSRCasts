@@ -18,8 +18,9 @@ let appConfigs = {
     adminConfig,
     clientConfig
 };
-import { initAppConfigs } from '@reactmono/core';
-initAppConfigs(appConfigs);
+
+import { initAppConfigs } from '@reactmono/framework-core';
+initAppConfigs(appConfigs, 'frontend');
 
 /** Serve api via proxy */
 import proxy from 'express-http-proxy';

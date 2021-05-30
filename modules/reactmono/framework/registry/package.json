@@ -1,5 +1,5 @@
 {
-  "name": "@reactmono/registry",
+  "name": "@reactmono/framework-registry",
   "version": "0.0.1",
   "description": "Global Shared Objects Registry",
   "main": "index.js",
