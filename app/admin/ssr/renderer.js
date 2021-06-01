@@ -10,6 +10,7 @@ import config from 'config';
 import { ChunkExtractor } from '@loadable/server';
 import { AppConfig } from '@reactmono/framework-registry';
 import path from 'path';
+import btoa from 'btoa';
 
 /**
  * Start point for node.js page rendering.
@@ -43,7 +44,7 @@ export default (req, store, context) => {
 
     const initialState = useSSR
         ? `<script>
-            window.INITIAL_STATE = ${serialize(store.getState())}
+            window.INITIAL_STATE = '${btoa(serialize(store.getState()))}';
         </script>`
         : '';
 

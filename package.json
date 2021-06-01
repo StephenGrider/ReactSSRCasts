@@ -46,6 +46,7 @@
         "babel-register": "^6.26.0",
         "bcryptjs": "^2.4.3",
         "body-parser": "^1.19.0",
+        "btoa": "^1.2.1",
         "compression": "^1.7.4",
         "concurrently": "^3.5.0",
         "config": "^3.3.3",
@@ -105,6 +106,6 @@
         "sass": "^1.32.8",
         "source-map-loader": "^2.0.1",
         "webpack-cli": "^4.5.0",
-        "webpack-dev-server": "^3.11.0"
+        "webpack-dev-server": "^3.7.2"
     }
 }

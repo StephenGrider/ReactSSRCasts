@@ -9,6 +9,7 @@ import getRoutes from '~client/bootstrap/routeProcessor';
 import config from 'config';
 import { ChunkExtractor } from '@loadable/server';
 import path from 'path';
+import btoa from 'btoa';
 
 export default (req, store, context) => {
     let useSSR = config.get('useSSR');
@@ -36,7 +37,7 @@ export default (req, store, context) => {
 
     const initialState = useSSR
         ? `<script>
-            window.INITIAL_STATE = ${serialize(store.getState())}
+            window.INITIAL_STATE = '${btoa(serialize(store.getState()))}';
         </script>`
         : '';
 
