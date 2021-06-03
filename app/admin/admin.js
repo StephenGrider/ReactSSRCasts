@@ -12,6 +12,7 @@ import getRoutes from '~admin/bootstrap/routeProcessor';
 import reducer from '~admin/bootstrap/reducerProcessor';
 import { getApiRoute, getAdminPath } from '~app/util/admin/config';
 import { loadableReady } from '@loadable/component';
+import { getStateVar } from '~app/util/base/config';
 
 const axiosInstance = axios.create({
     baseURL: `/${getAdminPath()}/${getApiRoute()}`
@@ -22,9 +23,11 @@ const storeParams = {
     resolver: axiosInstance
 }
 
+const initialState = JSON.parse(atob(window[getStateVar()]));
+
 const store = createStore(
     reducer,
-    JSON.parse(atob(window.INITIAL_STATE)),
+    initialState,
     applyMiddleware(thunk.withExtraArgument(storeParams))
 );
 

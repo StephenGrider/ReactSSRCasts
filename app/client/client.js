@@ -10,21 +10,24 @@ import { renderRoutes } from 'react-router-config';
 import axios from 'axios';
 import getRoutes from '~client/bootstrap/routeProcessor';
 import reducers from '~client/bootstrap/reducerProcessor';
-import config from '~app/etc/client/config.json';
+import { clientConfig } from '~app/etc/client';
+import { getStateVar } from '~app/util/base/config';
 import { loadableReady } from '@loadable/component';
 
 const axiosInstance = axios.create({
-    baseURL: `/${config.apiRoute}`
+    baseURL: `/${clientConfig.apiRoute}`
 });
 
 const storeParams = {
     type: 'frontend',
     resolver: axiosInstance
-}
+};
+
+const initialState = JSON.parse(atob(window[getStateVar()]));
 
 const store = createStore(
     reducers,
-    JSON.parse(atob(window.INITIAL_STATE)),
+    initialState,
     applyMiddleware(thunk.withExtraArgument(storeParams))
 );
 

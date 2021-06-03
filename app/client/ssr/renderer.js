@@ -3,13 +3,12 @@ import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { renderRoutes } from 'react-router-config';
-import serialize from 'serialize-javascript';
 import { Helmet } from 'react-helmet';
 import getRoutes from '~client/bootstrap/routeProcessor';
 import config from 'config';
 import { ChunkExtractor } from '@loadable/server';
 import path from 'path';
-import btoa from 'btoa';
+import rowStateGen from '~app/util/base/initialStateGenerator';
 
 export default (req, store, context) => {
     let useSSR = config.get('useSSR');
@@ -36,9 +35,7 @@ export default (req, store, context) => {
     const helmet = Helmet.renderStatic();
 
     const initialState = useSSR
-        ? `<script>
-            window.INITIAL_STATE = '${btoa(serialize(store.getState()))}';
-        </script>`
+        ? rowStateGen(store.getState())
         : '';
 
     const linkTags = extractor.getLinkTags();

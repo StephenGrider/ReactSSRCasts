@@ -3,14 +3,13 @@ import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { renderRoutes } from 'react-router-config';
-import serialize from 'serialize-javascript';
 import { Helmet } from 'react-helmet';
 import getRoutes from '~admin/bootstrap/routeProcessor';
 import config from 'config';
 import { ChunkExtractor } from '@loadable/server';
 import { AppConfig } from '@reactmono/framework-registry';
 import path from 'path';
-import btoa from 'btoa';
+import rowStateGen from '~app/util/base/initialStateGenerator';
 
 /**
  * Start point for node.js page rendering.
@@ -43,9 +42,7 @@ export default (req, store, context) => {
     const helmet = Helmet.renderStatic();
 
     const initialState = useSSR
-        ? `<script>
-            window.INITIAL_STATE = '${btoa(serialize(store.getState()))}';
-        </script>`
+        ? rowStateGen(store.getState())
         : '';
 
     const linkTags = extractor.getLinkTags();
