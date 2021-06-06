@@ -1,16 +1,21 @@
 import React from 'react';
-import { renderRoutes } from 'react-router-config';
+import { Switch, Route } from 'react-router-dom';
 import { Header } from '~admin/module/header';
 import { Alert } from '@reactmono/app-base-alert';
+import getRoutes from '~admin/bootstrap/routeProcessor';
 
-const App = ({ route }) => {
+const App = () => {
     return (
-        <div>
+        <div className={'app'}>
             <Alert />
             <Header />
-            {renderRoutes(route.routes)}
+            <Switch>
+                {getRoutes().map((routeParams) => (
+                    <Route key={routeParams.path} {...routeParams} />
+                ))}
+            </Switch>
         </div>
     );
-}
+};
 
 export default App;
