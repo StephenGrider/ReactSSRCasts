@@ -1,9 +1,0 @@
-{
-  "~client/module/auth": 1,
-  "~client/module/header": 1,
-  "~client/module/mock-inner-user-list": 1,
-  "~client/module/page-home": 1,
-  "~client/module/mock-page-user-list": 1,
-  "~client/module/page-not-found": 1,
-  "@reactmono/app-base-alert": 1
-}
