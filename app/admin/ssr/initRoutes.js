@@ -1,37 +1,47 @@
 import config from 'config';
-import { matchRoutes } from 'react-router-config';
+import { matchPath } from 'react-router-dom';
 import createStore from './createStore';
 import renderer from './renderer';
 import getRoutes from '~admin/bootstrap/routeProcessor';
 import { AppConfig } from '@reactmono/framework-registry';
+import url from 'url';
 
 /**
  * Frontend Admin routers configuration.
  * Process all other then api requests.
- * Admin area Backend frontend and browser frontend common start point.
+ * Admin area SSR frontend and browser frontend common start point.
  */
 export default (app) => {
     let adminPath = AppConfig.get('adminPath');
+    let adminBasePath = `/${adminPath}`;
 
-    app.get(`/${adminPath}*`, (req, res) => {
+    app.get(`${adminBasePath}*`, (req, res) => {
         let useSSR = config.get('useAdminSSR');
-        let apiRoutes = getRoutes();
-        let matchRoutesList = matchRoutes(apiRoutes, req.path);
+        let appRoutes = getRoutes();
+        let reqUrlPath = url.parse(req.url).pathname;
+
+        reqUrlPath = reqUrlPath.indexOf(adminBasePath) === 0
+            ? reqUrlPath.substr(adminBasePath.length)
+            : reqUrlPath;
 
         const store = createStore(req);
 
-        const promises = matchRoutesList.map(({route, match}) => {
-            return route.loadData && useSSR ? route.loadData(store, match.params) : null;
-        }).map(promise => {
-            if (promise) {
-                return new Promise((resolve, reject) => {
-                    promise.then(resolve).catch(resolve);
-                })
+        let dataLoader;
+        appRoutes.some(route => {
+            const { loadData } = route;
+            let routeMatch = matchPath(reqUrlPath, route);
+
+            if (routeMatch && loadData && useSSR) {
+                let loadDataPromise = loadData(store, routeMatch.params);
+                dataLoader = new Promise((resolve, reject) => {
+                    loadDataPromise.then(resolve).catch(resolve);
+                });
             }
+
+            return Boolean(routeMatch);
         });
 
-        /** Process page SSR data loaders */
-        Promise.all(promises).then(() => {
+        const render = () => {
             const context = {};
             const content = renderer(req, store, context);
 
@@ -44,6 +54,10 @@ export default (app) => {
             }
 
             res.send(content);
-        });
+        };
+
+        dataLoader
+            ? dataLoader.then(render)
+            : render();
     });
 }

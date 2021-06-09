@@ -79,6 +79,7 @@
         "redux": "3.7.2",
         "redux-thunk": "2.2.0",
         "serialize-javascript": "^5.0.1",
+        "url": "^0.11.0",
         "uuid": "^3.4.0",
         "webpack": "^5.23.0",
         "webpack-merge": "4.1.0",

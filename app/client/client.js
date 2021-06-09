@@ -38,6 +38,6 @@ loadableReady(() => {
                 <div>{renderRoutes(getRoutes())}</div>
             </BrowserRouter>
         </Provider>,
-        document.querySelector('#root')
+        document.getElementById('root')
     );
 });

@@ -1,5 +1,4 @@
 import React from 'react';
-import loadable from '@loadable/component';
 import modules from '~app/util/admin/getModules';
 import loaderGenerator from '~app/util/base/loaderGenerator';
 
@@ -32,20 +31,23 @@ let routes = Object.keys(modules).reduce((accumulatedConfigs, module) => {
 
     if (Array.isArray(route)) {
         route.map((routeRecord) => {
-            let routePath = routeRecord['path'];
-            if (routePath && loaders.hasOwnProperty(routePath)) {
-                let routeLoaders = loaders[routePath];
-                routeRecord['loadData'] = loaderGenerator(routeLoaders);
+            let routeRecordPath = routeRecord['path'];
+            let routeLoaders = loaders['default'] ? [...loaders['default']] : [];
+            if (routeRecordPath && loaders.hasOwnProperty(routeRecordPath)) {
+                routeLoaders = [...routeLoaders, ...loaders[routeRecordPath]];
             }
+
+            routeRecord['loadData'] = loaderGenerator(routeLoaders);
         });
 
         return [...accumulatedConfigs, ...route];
     } else {
         let routePath = route['path'];
+        let routeLoaders = loaders['default'] ? [...loaders['default']] : [];
         if (routePath && loaders.hasOwnProperty(routePath)) {
-            let routeLoaders = loaders[routePath];
-            route['loadData'] = loaderGenerator(routeLoaders);
+            routeLoaders = [...routeLoaders, ...loaders[routePath]];
         }
+        route['loadData'] = loaderGenerator(routeLoaders);
 
         return [...accumulatedConfigs, route];
     }
@@ -62,11 +64,4 @@ routes = routes.sort((routeA, routeB) => {
             : 0;
 });
 
-/** Routes configuration */
-export default () => ([
-    {
-        component: loadable(() => import(`../App`)),
-        loadData: loaderGenerator(loaders['default']),
-        routes
-    }
-]);
+export default () => routes;
