@@ -31,6 +31,7 @@ let routes = Object.keys(modules).reduce((accumulatedConfigs, module) => {
 
     if (Array.isArray(route)) {
         route.map((routeRecord) => {
+            // Route data loaders.
             let routeRecordPath = routeRecord['path'];
             let routeLoaders = loaders['default'] ? [...loaders['default']] : [];
             if (routeRecordPath && loaders.hasOwnProperty(routeRecordPath)) {
@@ -38,19 +39,14 @@ let routes = Object.keys(modules).reduce((accumulatedConfigs, module) => {
             }
 
             routeRecord['loadData'] = loaderGenerator(routeLoaders);
+            // Add Module route Module info to the route record.
+            routeRecord['module'] = module;
         });
 
         return [...accumulatedConfigs, ...route];
-    } else {
-        let routePath = route['path'];
-        let routeLoaders = loaders['default'] ? [...loaders['default']] : [];
-        if (routePath && loaders.hasOwnProperty(routePath)) {
-            routeLoaders = [...routeLoaders, ...loaders[routePath]];
-        }
-        route['loadData'] = loaderGenerator(routeLoaders);
-
-        return [...accumulatedConfigs, route];
     }
+
+    return accumulatedConfigs;
 }, []);
 
 routes = routes.sort((routeA, routeB) => {

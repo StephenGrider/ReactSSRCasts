@@ -5,24 +5,20 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 
-var _component = _interopRequireDefault(require("@loadable/component"));
+var _SignUpPage = _interopRequireDefault(require("./page/SignUpPage"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+// import loadable from '@loadable/component';
 
-function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
-
-function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-
+/**
+ * Loadable isn't working correctly for server side rendering if we use it in npm package module.
+ * Recommended to avoid loadable usage in npm modules.
+ * Expected pages to be processed correctly with loadable and SSR declare routes under app directory.
+ */
 var _default = [{
-  component:
-  /* #__LOADABLE__ */
-  (0, _component["default"])(function () {
-    return Promise.resolve().then(function () {
-      return _interopRequireWildcard(require("./SignUpPage"));
-    });
-  }),
+  // component: /* #__LOADABLE__ */ loadable(() => import(`./page/SignUpPage`)),
+  component: _SignUpPage["default"],
   path: "/signup"
 }];
 exports["default"] = _default;
