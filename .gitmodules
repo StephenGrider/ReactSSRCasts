@@ -1,0 +1,3 @@
+[submodule "vendor/reactmono/app-admin-page-sign-up"]
+	path = vendor/reactmono/app-admin-page-sign-up
+	url = https://github.com/reactmono/page-sign-up.git
