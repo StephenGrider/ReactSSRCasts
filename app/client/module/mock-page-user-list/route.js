@@ -2,11 +2,11 @@ import loadable from '@loadable/component';
 
 export default [
     {
-        component: loadable(() => import(`./UsersListPage`)),
+        component: loadable(() => import(`./page/UsersListPage`)),
         path: '/users'
     },
     {
-        component: loadable(() => import(`./UserPage`)),
+        component: loadable(() => import(`./page/UserPage`)),
         path: '/user/:id'
     }
 ];

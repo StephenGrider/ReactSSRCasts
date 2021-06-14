@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { action as actionAdmins } from './store';
+import { action as actionAdmins } from '../store';
 import { requireAuth } from '@reactmono/app-base-hoc';
 
 const { fetchAdmins } = actionAdmins;

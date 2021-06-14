@@ -2,13 +2,12 @@ import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { renderRoutes } from 'react-router-config';
 import { Helmet } from 'react-helmet';
-import getRoutes from '~client/bootstrap/routeProcessor';
 import config from 'config';
 import { ChunkExtractor } from '@loadable/server';
 import path from 'path';
 import rowStateGen from '~app/util/base/initialStateGenerator';
+import App from '../App';
 
 export default (req, store, context) => {
     let useSSR = config.get('useSSR');
@@ -17,7 +16,7 @@ export default (req, store, context) => {
     const app = (
         <Provider store={store}>
             <StaticRouter location={req.path} context={context}>
-                <div>{renderRoutes(getRoutes())}</div>
+                <App />
             </StaticRouter>
         </Provider>
     );
@@ -30,13 +29,18 @@ export default (req, store, context) => {
     const jsx = extractor.collectChunks(app);
 
     // Render your application
-    const content = useSSR ? renderToString(jsx) : '';
+    let content = '';
+    try {
+        content = useSSR ? renderToString(jsx) : '';
+    } catch (err) {
+        console.error(err);
+    }
 
     const helmet = Helmet.renderStatic();
 
     const initialState = useSSR
         ? rowStateGen(store.getState())
-        : '';
+        : rowStateGen({});
 
     const linkTags = extractor.getLinkTags();
     const styleTags = extractor.getStyleTags();

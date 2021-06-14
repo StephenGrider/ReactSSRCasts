@@ -5,7 +5,7 @@ import axios from 'axios';
 import config from 'config';
 import { AppConfig } from '@reactmono/framework-registry';
 
-/** Backend admin SSR Redux Store. */
+/** Render Server admin SSR Redux Store. */
 export default (req) => {
     const backendProtocol = config.get('backend.protocol');
     const serverHost = config.get('backend.host');

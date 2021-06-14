@@ -1,8 +1,9 @@
 import config from 'config';
-import { matchRoutes } from 'react-router-config';
 import createStore from './createStore';
 import renderer from './renderer';
 import getRoutes from '~client/bootstrap/routeProcessor';
+import url from 'url';
+import {matchPath} from 'react-router-dom';
 
 /**
  * Frontend Client routers configuration.
@@ -12,24 +13,28 @@ import getRoutes from '~client/bootstrap/routeProcessor';
 export default (app) => {
     app.get('*', (req, res) => {
         let useSSR = config.get('useSSR');
-        let apiRoutes = getRoutes();
-        let matchRoutesList = matchRoutes(apiRoutes, req.path);
+        let appRoutes = getRoutes();
+        let reqUrlPath = url.parse(req.url).pathname;
 
         const store = createStore(req);
 
         /** Prepare page SSR data loaders as promises */
-        const promises = matchRoutesList.map(({ route, match }) => {
-            return route.loadData && useSSR ? route.loadData(store, match.params) : null;
-        }).map(promise => {
-            if (promise) {
-                return new Promise((resolve, reject) => {
-                    promise.then(resolve).catch(resolve);
-                })
+        let dataLoader;
+        appRoutes.some(route => {
+            const { loadData } = route;
+            let routeMatch = matchPath(reqUrlPath, route);
+
+            if (routeMatch && loadData && useSSR) {
+                let loadDataPromise = loadData(store, routeMatch.params);
+                dataLoader = new Promise((resolve, reject) => {
+                    loadDataPromise.then(resolve).catch(resolve);
+                });
             }
+
+            return Boolean(routeMatch);
         });
 
-        /** Process page SSR data loaders */
-        Promise.all(promises).then(() => {
+        const render = () => {
             const context = {};
             const content = renderer(req, store, context);
 
@@ -42,6 +47,10 @@ export default (app) => {
             }
 
             res.send(content);
-        });
+        };
+
+        dataLoader
+            ? dataLoader.then(render)
+            : render();
     });
 }
