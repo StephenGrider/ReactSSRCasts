@@ -23,6 +23,10 @@ const plugins = [
                 {
                     "rootPathSuffix": "./app/admin",
                     "rootPathPrefix": "~admin/"
+                },
+                {
+                    "rootPathSuffix": "./vendor",
+                    "rootPathPrefix": "~vendor/"
                 }
             ]
         }

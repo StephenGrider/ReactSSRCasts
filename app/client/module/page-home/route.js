@@ -2,7 +2,7 @@ import loadable from '@loadable/component';
 
 export default [
     {
-        component: loadable(() => import(`./HomePage`)),
+        component: loadable(() => import(`./page/HomePage`)),
         path: `/`,
         exact: true
     }

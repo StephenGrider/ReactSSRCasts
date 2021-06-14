@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { action as userAction } from './store';
+import { action as userAction } from '../store';
 import { Helmet } from 'react-helmet';
 import { useParams } from 'react-router-dom';
 

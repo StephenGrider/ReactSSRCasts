@@ -7,3 +7,4 @@ node_modules
 public/
 server-build/*
 dockervolume/*
+modules/reactmono/app/admin/mock-page-sign-up

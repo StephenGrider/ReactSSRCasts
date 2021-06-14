@@ -6,13 +6,12 @@ import { BrowserRouter } from 'react-router-dom';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
-import { renderRoutes } from 'react-router-config';
 import axios from 'axios';
-import getRoutes from '~admin/bootstrap/routeProcessor';
 import reducer from '~admin/bootstrap/reducerProcessor';
 import { getApiRoute, getAdminPath } from '~app/util/admin/config';
 import { loadableReady } from '@loadable/component';
 import { getStateVar } from '~app/util/base/config';
+import App from './App';
 
 const axiosInstance = axios.create({
     baseURL: `/${getAdminPath()}/${getApiRoute()}`
@@ -35,9 +34,9 @@ loadableReady(() => {
     hydrate(
         <Provider store={store}>
             <BrowserRouter basename={getAdminPath()}>
-                <div>{renderRoutes(getRoutes())}</div>
+                <App />
             </BrowserRouter>
         </Provider>,
-        document.querySelector('#root')
+        document.getElementById('root')
     );
 });
