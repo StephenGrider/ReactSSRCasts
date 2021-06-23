@@ -3,7 +3,8 @@ import createStore from './createStore';
 import renderer from './renderer';
 import getRoutes from '~client/bootstrap/routeProcessor';
 import url from 'url';
-import {matchPath} from 'react-router-dom';
+import { matchPath } from 'react-router-dom';
+import { AppConfig } from '@reactmono/framework-registry';
 
 /**
  * Frontend Client routers configuration.
@@ -11,10 +12,17 @@ import {matchPath} from 'react-router-dom';
  * Backend frontend and browser frontend common start point.
  */
 export default (app) => {
-    app.get('*', (req, res) => {
+    let clientPath = AppConfig.get('clientPath');
+    let clientBasePath = `/${clientPath}`;
+
+    app.get(`${clientBasePath}*`, (req, res) => {
         let useSSR = config.get('useSSR');
         let appRoutes = getRoutes();
         let reqUrlPath = url.parse(req.url).pathname;
+
+        reqUrlPath = clientPath.length && reqUrlPath.indexOf(clientBasePath) === 0
+            ? reqUrlPath.substr(clientBasePath.length)
+            : reqUrlPath;
 
         const store = createStore(req);
 

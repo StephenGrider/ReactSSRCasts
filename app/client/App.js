@@ -4,9 +4,9 @@ import { Header } from '~client/module/header';
 import { Alert } from '@reactmono/app-base-alert';
 import getRoutes from '~client/bootstrap/routeProcessor';
 
-const App = ({ route }) => {
+const App = () => {
     return (
-        <div>
+        <div className={'app'}>
             <Alert />
             <Header />
             <Switch>

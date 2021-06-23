@@ -8,13 +8,17 @@ import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import axios from 'axios';
 import reducers from '~client/bootstrap/reducerProcessor';
-import { clientConfig } from '~app/etc/client';
+import { getApiRoute, getClientPath } from '~app/util/client/config';
 import { getStateVar } from '~app/util/base/config';
 import { loadableReady } from '@loadable/component';
 import App from './App';
 
+const baseUrl = getClientPath().length && getClientPath() !== '/' > 0
+    ? `/${getClientPath()}/${getApiRoute()}`
+    : `/${getApiRoute()}`;
+
 const axiosInstance = axios.create({
-    baseURL: `/${clientConfig.apiRoute}`
+    baseURL: baseUrl
 });
 
 const storeParams = {
@@ -33,7 +37,7 @@ const store = createStore(
 loadableReady(() => {
     hydrate(
         <Provider store={store}>
-            <BrowserRouter>
+            <BrowserRouter basename={getClientPath()}>
                 <App />
             </BrowserRouter>
         </Provider>,

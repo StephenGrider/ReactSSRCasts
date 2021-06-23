@@ -17,6 +17,7 @@ const setClientApiPath = (appConfigs) => {
     /** Set client Api path configuration. */
     let clientPath = appConfigs.clientConfig.clientPath;
     let clientApiRoute = appConfigs.clientConfig.apiRoute;
+    AppConfig.set('clientPath', clientPath);
     let clientApiPath = clientPath.length
         ? path.join('/', clientPath, clientApiRoute)
         : path.join('/', clientApiRoute);

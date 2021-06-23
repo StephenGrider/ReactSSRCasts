@@ -8,14 +8,16 @@ import { ChunkExtractor } from '@loadable/server';
 import path from 'path';
 import rowStateGen from '~app/util/base/initialStateGenerator';
 import App from '../App';
+import { AppConfig } from '@reactmono/framework-registry';
 
 export default (req, store, context) => {
     let useSSR = config.get('useSSR');
+    const clientPath = AppConfig.get('clientPath');
     let stylesPath = `/styles/${config.get('design.client')}/styles.css`;
 
     const app = (
         <Provider store={store}>
-            <StaticRouter location={req.path} context={context}>
+            <StaticRouter basename={clientPath} location={req.path} context={context}>
                 <App />
             </StaticRouter>
         </Provider>

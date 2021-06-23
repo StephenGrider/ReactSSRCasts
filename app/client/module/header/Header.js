@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { getBaseApiPath } from '~app/util/client/config';
 
 const Header = ({ auth }) => {
     console.log('My auth status is', auth);
 
-    const  authButton = auth
-        ? <a href="/api/logout">Logout</a>
-        : <a href="/api/auth/google">Login</a>;
+    const authButton = auth
+        ? <a onClick={e => (window.location.href = `${getBaseApiPath()}/logout`)}>Logout</a>
+        : <a onClick={e => (window.location.href = `${getBaseApiPath()}/auth/google`)}>Login</a>;
 
     const adminsLink =  auth
         ? <Link to={'/admins'}>Admins</Link>
