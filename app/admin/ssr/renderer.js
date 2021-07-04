@@ -9,22 +9,25 @@ import { AppConfig } from '@reactmono/framework-registry';
 import path from 'path';
 import rowStateGen from '~app/util/base/initialStateGenerator';
 import App from '../App';
+import { ConnectedRouter } from 'connected-react-router';
 
 /**
  * Start point for node.js page rendering.
  * - React application rendering on backend.
  * - Process page <head> tag elements.
  */
-export default (req, store, context) => {
+export default (req, store, context, history) => {
     let useSSR = config.get('useAdminSSR');
     const adminPath = AppConfig.get('adminPath');
     let stylesPath = `/styles/${config.get('design.admin')}/styles.css`;
 
     const app = (
         <Provider store={store}>
-            <StaticRouter basename={adminPath} location={req.path} context={context}>
-                <App />
-            </StaticRouter>
+            <ConnectedRouter history={history}>
+                <StaticRouter basename={adminPath} location={req.path} context={context}>
+                    <App />
+                </StaticRouter>
+            </ConnectedRouter>
         </Provider>
     );
 

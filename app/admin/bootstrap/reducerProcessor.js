@@ -1,11 +1,17 @@
 import { combineReducers } from 'redux';
 import modules from '~app/util/admin/getModules';
+import { connectRouter } from 'connected-react-router';
 
-let reducers = Object.keys(modules).reduce((result, moduleAlias) => {
-    let module = modules[moduleAlias];
-    let { reducer } = module;
+export default (history) => {
+    let reducers = Object.keys(modules).reduce((result, moduleAlias) => {
+        let module = modules[moduleAlias];
+        let { reducer } = module;
 
-    return {...result, ...reducer};
-}, {});
+        return {...result, ...reducer};
+    }, {});
 
-export default combineReducers(reducers);
+    return combineReducers({
+        router: connectRouter(history),
+        ... reducers
+    })
+};

@@ -5,11 +5,13 @@ import renderer from './renderer';
 import getRoutes from '~admin/bootstrap/routeProcessor';
 import { AppConfig } from '@reactmono/framework-registry';
 import url from 'url';
+import { createMemoryHistory } from 'history';
 
 /**
  * Frontend Admin routers configuration.
  * Process all other then api requests.
- * Admin area SSR frontend and browser frontend common start point.
+ * Admin area SSR start point.
+ * Called in app/index.js
  */
 export default (app) => {
     let adminPath = AppConfig.get('adminPath');
@@ -19,12 +21,14 @@ export default (app) => {
         let useSSR = config.get('useAdminSSR');
         let appRoutes = getRoutes();
         let reqUrlPath = url.parse(req.url).pathname;
+        let history = createMemoryHistory();
+        history.push(req.url, {});
 
         reqUrlPath = reqUrlPath.indexOf(adminBasePath) === 0
             ? reqUrlPath.substr(adminBasePath.length)
             : reqUrlPath;
 
-        const store = createStore(req);
+        const store = createStore(req, history);
 
         let dataLoader;
         appRoutes.some(route => {
@@ -41,23 +45,23 @@ export default (app) => {
             return Boolean(routeMatch);
         });
 
-        const render = () => {
-            const context = {};
-            const content = renderer(req, store, context);
-
-            if (context.url) {
-                return res.redirect(301, context.url);
-            }
-
-            if (context.notFound) {
-                res.status(404);
-            }
-
-            res.send(content);
-        };
-
         dataLoader
-            ? dataLoader.then(render)
-            : render();
+            ? dataLoader.then(() => render(req, res, store, history))
+            : render(req, res, store, history);
     });
-}
+};
+
+const render = (req, res, store, history) => {
+    const context = {};
+    const content = renderer(req, store, context, history);
+
+    if (context.url) {
+        return res.redirect(301, context.url);
+    }
+
+    if (context.notFound) {
+        res.status(404);
+    }
+
+    res.send(content);
+};
