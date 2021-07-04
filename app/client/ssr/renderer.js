@@ -9,17 +9,20 @@ import path from 'path';
 import rowStateGen from '~app/util/base/initialStateGenerator';
 import App from '../App';
 import { AppConfig } from '@reactmono/framework-registry';
+import { ConnectedRouter } from 'connected-react-router';
 
-export default (req, store, context) => {
+export default (req, store, context, history) => {
     let useSSR = config.get('useSSR');
     const clientPath = AppConfig.get('clientPath');
     let stylesPath = `/styles/${config.get('design.client')}/styles.css`;
 
     const app = (
         <Provider store={store}>
-            <StaticRouter basename={clientPath} location={req.path} context={context}>
-                <App />
-            </StaticRouter>
+            <ConnectedRouter history={history}>
+                <StaticRouter basename={clientPath} location={req.path} context={context}>
+                    <App />
+                </StaticRouter>
+            </ConnectedRouter>
         </Provider>
     );
 

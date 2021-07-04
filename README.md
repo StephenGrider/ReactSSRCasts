@@ -42,3 +42,8 @@ npm init -y
 ```
 npm install --save ./modules/reactmono/test-user
 ```
+#### Features
+
+* connected-react-router
+ connects history with redux store, allows working with history and use history store actions
+  https://github.com/supasate/connected-react-router

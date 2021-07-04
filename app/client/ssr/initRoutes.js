@@ -5,11 +5,12 @@ import getRoutes from '~client/bootstrap/routeProcessor';
 import url from 'url';
 import { matchPath } from 'react-router-dom';
 import { AppConfig } from '@reactmono/framework-registry';
+import { createMemoryHistory } from 'history';
 
 /**
- * Frontend Client routers configuration.
- * Process all other then api requests.
- * Backend frontend and browser frontend common start point.
+ * Frontend Client routers SSR processing.
+ * Handle all other then api requests.
+ * Called in app/index.js
  */
 export default (app) => {
     let clientPath = AppConfig.get('clientPath');
@@ -19,12 +20,14 @@ export default (app) => {
         let useSSR = config.get('useSSR');
         let appRoutes = getRoutes();
         let reqUrlPath = url.parse(req.url).pathname;
+        let history = createMemoryHistory();
+        history.push(req.url, {});
 
         reqUrlPath = clientPath.length && reqUrlPath.indexOf(clientBasePath) === 0
             ? reqUrlPath.substr(clientBasePath.length)
             : reqUrlPath;
 
-        const store = createStore(req);
+        const store = createStore(req, history);
 
         /** Prepare page SSR data loaders as promises */
         let dataLoader;
@@ -42,23 +45,23 @@ export default (app) => {
             return Boolean(routeMatch);
         });
 
-        const render = () => {
-            const context = {};
-            const content = renderer(req, store, context);
-
-            if (context.url) {
-                return res.redirect(301, context.url);
-            }
-
-            if (context.notFound) {
-                res.status(404);
-            }
-
-            res.send(content);
-        };
-
         dataLoader
-            ? dataLoader.then(render)
-            : render();
+            ? dataLoader.then(() => render(req, res, store, history))
+            : render(req, res, store, history);
     });
-}
+};
+
+const render = (req, res, store, history) => {
+    const context = {};
+    const content = renderer(req, store, context, history);
+
+    if (context.url) {
+        return res.redirect(301, context.url);
+    }
+
+    if (context.notFound) {
+        res.status(404);
+    }
+
+    res.send(content);
+};
